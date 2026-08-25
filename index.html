@@ -360,25 +360,7 @@
   <!-- ===================== LEFT: INPUT ===================== -->
   <div>
     <div class="panel">
-      <h2><span class="num">01</span> Rule Set CSVs</h2>
-
-      <label>Standard Rule Set</label>
-      <div class="filerow" id="row-config"><span class="req">required</span><input type="file" id="file-config" accept=".csv"></div>
-
-      <label>EMV Tag Rule Set</label>
-      <div class="filerow" id="row-emv"><span class="req">required</span><input type="file" id="file-emv" accept=".csv"></div>
-
-      <label>DE61 Rule Set</label>
-      <div class="filerow" id="row-de61"><span class="opt">optional</span><input type="file" id="file-de61" accept=".csv"></div>
-
-      <label>DE63 Rule Set</label>
-      <div class="filerow" id="row-de63"><span class="opt">optional</span><input type="file" id="file-de63" accept=".csv"></div>
-
-      <p class="hint">Same column layout as the desktop tool's "Rule Set.csv" / "Rule Set - EMV Tag.csv" / "Rule Set - DE61.csv" / "Rule Set - DE63.csv".</p>
-    </div>
-
-    <div class="panel">
-      <h2><span class="num">02</span> Trace &amp; Target Leg</h2>
+      <h2><span class="num">01</span> Trace &amp; Target Leg</h2>
       <label>Message Leg to Validate</label>
       <select id="target-leg">
         <option value="ACQ REQ" selected>Acq Req</option>
@@ -393,6 +375,24 @@ MESSAGE_ID_ISO   000 [0200]
 PRIMARY_ACCT_NBR 002 [4111111111111111]
 ...
 Cont..[continuation lines append to the field above]"></textarea>
+    </div>
+
+    <div class="panel">
+      <h2><span class="num">02</span> Rule Set CSVs</h2>
+
+      <label>Standard Rule Set</label>
+      <div class="filerow" id="row-config"><span class="req">required</span><input type="file" id="file-config" accept=".csv"></div>
+
+      <label>EMV Tag Rule Set</label>
+      <div class="filerow" id="row-emv"><span class="req">required</span><input type="file" id="file-emv" accept=".csv"></div>
+
+      <label>DE61 Rule Set</label>
+      <div class="filerow" id="row-de61"><span class="opt">optional</span><input type="file" id="file-de61" accept=".csv"></div>
+
+      <label>DE63 Rule Set</label>
+      <div class="filerow" id="row-de63"><span class="opt">optional</span><input type="file" id="file-de63" accept=".csv"></div>
+
+      <p class="hint">Same column layout as the desktop tool's "Rule Set.csv" / "Rule Set - EMV Tag.csv" / "Rule Set - DE61.csv" / "Rule Set - DE63.csv".</p>
     </div>
 
     <div class="panel">
