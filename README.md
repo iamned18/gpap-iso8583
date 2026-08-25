@@ -22,6 +22,31 @@ machine.
 Notepad++'s `Npp` module / local file I/O that don't apply in a browser.
 `web_adapter.py` replaces that role.
 
+## Preloading Rule Set CSVs (optional)
+
+By default, people using the page upload the Rule Set CSVs themselves each
+session. If you'd rather they didn't have to, commit your real CSVs into
+the repo under a `rules/` folder next to `index.html`, using these exact
+filenames:
+
+| Repo path | Replaces |
+|---|---|
+| `rules/standard.csv` | Standard Rule Set upload |
+| `rules/emv.csv` | EMV Tag Rule Set upload |
+| `rules/de61.csv` | DE61 Rule Set upload |
+| `rules/de63.csv` | DE63 Rule Set upload |
+
+On page load, `index.html` tries to `fetch()` each of those paths. Any that
+exist load automatically and the corresponding upload box shows a
+**preloaded** badge; any that don't exist just fall back to requiring a
+manual upload, same as before. Uploading a file always overrides whatever
+was preloaded, for that browser session only — nothing is written back to
+the repo.
+
+Since these CSVs would then be sitting in a public GitHub Pages repo, only
+do this if the rule set itself isn't sensitive (it's validation logic, not
+transaction data — but use your judgment for your org).
+
 ## Deploying to GitHub Pages
 
 1. Create a new GitHub repo (or use an existing one).

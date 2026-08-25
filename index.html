@@ -191,6 +191,15 @@
     flex-shrink:0;
   }
   .filerow.ok{border-style:solid; border-color:var(--pass);}
+  .filerow .preloaded{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--pass);
+    border:1px solid var(--pass);
+    padding:1px 6px;
+    border-radius:2px;
+    flex-shrink:0;
+  }
 
   .row2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
   .row3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;}
@@ -381,18 +390,18 @@ Cont..[continuation lines append to the field above]"></textarea>
       <h2><span class="num">02</span> Rule Set CSVs</h2>
 
       <label>Standard Rule Set</label>
-      <div class="filerow" id="row-config"><span class="req">required</span><input type="file" id="file-config" accept=".csv"></div>
+      <div class="filerow" id="row-config"><span class="req" id="tag-config">required</span><input type="file" id="file-config" accept=".csv"></div>
 
       <label>EMV Tag Rule Set</label>
-      <div class="filerow" id="row-emv"><span class="req">required</span><input type="file" id="file-emv" accept=".csv"></div>
+      <div class="filerow" id="row-emv"><span class="req" id="tag-emv">required</span><input type="file" id="file-emv" accept=".csv"></div>
 
       <label>DE61 Rule Set</label>
-      <div class="filerow" id="row-de61"><span class="opt">optional</span><input type="file" id="file-de61" accept=".csv"></div>
+      <div class="filerow" id="row-de61"><span class="opt" id="tag-de61">optional</span><input type="file" id="file-de61" accept=".csv"></div>
 
       <label>DE63 Rule Set</label>
-      <div class="filerow" id="row-de63"><span class="opt">optional</span><input type="file" id="file-de63" accept=".csv"></div>
+      <div class="filerow" id="row-de63"><span class="opt" id="tag-de63">optional</span><input type="file" id="file-de63" accept=".csv"></div>
 
-      <p class="hint">Same column layout as the desktop tool's "Rule Set.csv" / "Rule Set - EMV Tag.csv" / "Rule Set - DE61.csv" / "Rule Set - DE63.csv".</p>
+      <p class="hint" id="csv-source-hint">Same column layout as the desktop tool's "Rule Set.csv" / "Rule Set - EMV Tag.csv" / "Rule Set - DE61.csv" / "Rule Set - DE63.csv". Uploading a file here overrides a preloaded one.</p>
     </div>
 
     <div class="panel">
@@ -490,20 +499,71 @@ function updateRunEnabled(){
 
 document.getElementById('trace-text').addEventListener('input', updateRunEnabled);
 
-function wireFileInput(inputId, rowId, key){
+function wireFileInput(inputId, rowId, key, tagId){
   document.getElementById(inputId).addEventListener('change', async (e)=>{
     const f = e.target.files[0];
     const row = document.getElementById(rowId);
-    if (!f){ fileText[key] = null; row.classList.remove('ok'); updateRunEnabled(); return; }
+    const tag = document.getElementById(tagId);
+    if (!f){
+      // Reverting to whatever was preloaded (if anything)
+      if (preloaded[key]){
+        fileText[key] = preloaded[key];
+        row.classList.add('ok');
+        tag.className = 'preloaded'; tag.textContent = 'preloaded';
+      } else {
+        fileText[key] = null;
+        row.classList.remove('ok');
+      }
+      updateRunEnabled();
+      return;
+    }
     fileText[key] = await f.text();
     row.classList.add('ok');
+    tag.className = 'preloaded'; tag.textContent = 'uploaded';
     updateRunEnabled();
   });
 }
-wireFileInput('file-config','row-config','config');
-wireFileInput('file-emv','row-emv','emv');
-wireFileInput('file-de61','row-de61','de61');
-wireFileInput('file-de63','row-de63','de63');
+wireFileInput('file-config','row-config','config','tag-config');
+wireFileInput('file-emv','row-emv','emv','tag-emv');
+wireFileInput('file-de61','row-de61','de61','tag-de61');
+wireFileInput('file-de63','row-de63','de63','tag-de63');
+
+// Default CSVs bundled in the repo under ./rules/. If present, they're
+// fetched automatically at load so the person doesn't have to upload
+// anything; uploading a file still overrides the preloaded one.
+const preloaded = {config:null, emv:null, de61:null, de63:null};
+const DEFAULT_CSV_PATHS = {
+  config: './rules/standard.csv',
+  emv:    './rules/emv.csv',
+  de61:   './rules/de61.csv',
+  de63:   './rules/de63.csv',
+};
+
+async function tryPreloadDefaults(){
+  const rowIds = {config:'row-config', emv:'row-emv', de61:'row-de61', de63:'row-de63'};
+  const tagIds = {config:'tag-config', emv:'tag-emv', de61:'tag-de61', de63:'tag-de63'};
+  let anyLoaded = false;
+  for (const key of Object.keys(DEFAULT_CSV_PATHS)){
+    try{
+      const resp = await fetch(DEFAULT_CSV_PATHS[key]);
+      if (!resp.ok) continue;
+      const text = await resp.text();
+      preloaded[key] = text;
+      fileText[key] = text;
+      const row = document.getElementById(rowIds[key]);
+      const tag = document.getElementById(tagIds[key]);
+      row.classList.add('ok');
+      tag.className = 'preloaded';
+      tag.textContent = 'preloaded';
+      anyLoaded = true;
+    } catch(e){ /* no default at that path — leave as manual upload */ }
+  }
+  if (anyLoaded){
+    document.getElementById('csv-source-hint').textContent =
+      'Rule Set CSVs preloaded from this site\'s /rules folder. Upload a file above to use a different one for this session only.';
+  }
+  updateRunEnabled();
+}
 
 async function boot(){
   setStatus('Loading Python runtime (first load only, a few seconds)…');
@@ -526,6 +586,7 @@ async function boot(){
 
   pyodideReady = pyodide;
   setStatus('Ready.');
+  await tryPreloadDefaults();
   updateRunEnabled();
   runBtn.textContent = 'Run Validation';
 }
