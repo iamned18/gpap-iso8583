@@ -1,0 +1,938 @@
+TXN,CARDS,DE,C,S,F,M,T,Description
+PREAUTH,V,2,X,X,X,M,X,Primary Account Number (PAN)
+PREAUTH,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+PREAUTH,V,4,M,M,M,M,M,"Amount, Transaction"
+PREAUTH,V,11,M,M,M,M,M,Systems Trace Audit Number
+PREAUTH,V,12,O,O,O,O,O,"Time, Local Transaction"
+PREAUTH,V,13,O,O,O,O,O,"Date, Local Transaction"
+PREAUTH,V,14,X,X,X,M,X,"Date, Expiration"
+PREAUTH,V,18,O,O,O,O,O,Merchant Type Code
+PREAUTH,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+PREAUTH,V,24,M,M,M,M,M,Network International Identifier (NII)
+PREAUTH,V,25,50,50,50,50,50,Point-of-Service Condition Code
+PREAUTH,V,28,O,O,O,O,O,Transaction Fee Amount
+PREAUTH,V,35,M,M,M,X,M,Track 2 Data
+PREAUTH,V,36,X,X,X,X,X,Track 3 Data
+PREAUTH,V,37,X,X,X,X,X,Retrieval Reference Number
+PREAUTH,V,38,X,X,X,X,X,Authorization Code
+PREAUTH,V,39,X,X,X,X,X,Response Code
+PREAUTH,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+PREAUTH,V,42,M,M,M,M,M,Card Acceptor Identification Code
+PREAUTH,V,48,O,O,O,O,O,Card Verification Data
+PREAUTH,V,52,M,M,M,M,M,PIN Data
+PREAUTH,V,53,M,M,M,M,M,Security Related Control Information
+PREAUTH,V,54,X,X,X,X,X,Additional Amounts
+PREAUTH,V,55,M,X,X,X,M,EMV Chip Data
+PREAUTH,V,59,O,O,O,O,O,Card Authentication Data
+PREAUTH,V,61,M,M,M,M,M,Additional POS Data
+PREAUTH,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+PREAUTH,V,63,M,M,M,M,M,Additional Data
+PREAUTH,U,2,X,X,X,M,X,Primary Account Number (PAN)
+PREAUTH,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+PREAUTH,U,4,M,M,M,M,M,"Amount, Transaction"
+PREAUTH,U,11,M,M,M,M,M,Systems Trace Audit Number
+PREAUTH,U,12,O,O,O,O,O,"Time, Local Transaction"
+PREAUTH,U,13,O,O,O,O,O,"Date, Local Transaction"
+PREAUTH,U,14,X,X,X,M,X,"Date, Expiration"
+PREAUTH,U,18,O,O,O,O,O,Merchant Type Code
+PREAUTH,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+PREAUTH,U,24,M,M,M,M,M,Network International Identifier (NII)
+PREAUTH,U,25,50,50,50,50,50,Point-of-Service Condition Code
+PREAUTH,U,28,O,O,O,O,O,Transaction Fee Amount
+PREAUTH,U,35,M,M,M,X,M,Track 2 Data
+PREAUTH,U,36,C,C,C,X,C,Track 3 Data
+PREAUTH,U,37,X,X,X,X,X,Retrieval Reference Number
+PREAUTH,U,38,X,X,X,X,X,Authorization Code
+PREAUTH,U,39,X,X,X,X,X,Response Code
+PREAUTH,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+PREAUTH,U,42,M,M,M,M,M,Card Acceptor Identification Code
+PREAUTH,U,48,O,O,O,O,O,Card Verification Data
+PREAUTH,U,52,O,O,O,O,O,PIN Data
+PREAUTH,U,53,O,O,O,O,O,Security Related Control Information
+PREAUTH,U,54,X,X,X,X,X,Additional Amounts
+PREAUTH,U,55,M,X,X,X,M,EMV Chip Data
+PREAUTH,U,59,O,O,O,O,O,Card Authentication Data
+PREAUTH,U,61,M,M,M,M,M,Additional POS Data
+PREAUTH,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+PREAUTH,U,63,M,M,M,M,M,Additional Data
+PVOID,U,2,X,X,M,M,X,Primary Account Number (PAN)
+PVOID,U,3,2000NN,2000NN,2000NN,2000NN,2000NN,Processing Code
+PVOID,U,4,M,M,M,M,M,"Amount, Transaction"
+PVOID,U,11,M,M,M,M,M,Systems Trace Audit Number
+PVOID,U,12,O,O,O,O,O,"Time, Local Transaction"
+PVOID,U,13,M,M,M,M,M,"Date, Local Transaction"
+PVOID,U,14,X,X,X,M,X,"Date, Expiration"
+PVOID,U,22,01N,01N,01N,01N,01N,Point-of-Service Entry Mode
+PVOID,U,24,M,M,M,M,M,Network International Identifier (NII)
+PVOID,U,25,50,50,50,50,50,Point-of-Service Condition Code
+PVOID,U,35,X,M,X,X,X,Track 2 Data
+PVOID,U,36,O,O,O,O,O,Track 3 Data
+PVOID,U,37,M,M,M,M,M,Retrieval Reference Number
+PVOID,U,38,O,O,O,O,O,Authorization Code
+PVOID,U,39,X,X,X,X,X,Response Code
+PVOID,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+PVOID,U,42,M,M,M,M,M,Card Acceptor Identification Code
+PVOID,U,48,O,O,O,O,O,Card Verification Data
+PVOID,U,52,O,O,O,O,O,PIN Data
+PVOID,U,53,O,O,O,O,O,Security Related Control Information
+PVOID,U,55,M,X,X,X,M,EMV Chip Data
+PVOID,U,59,O,O,O,O,O,Card Authentication Data
+PVOID,U,61,M,M,M,M,M,Additional POS Data
+PVOID,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+PVOID,U,63,M,M,M,M,M,Additional Data
+SALE,V,2,X,X,X,M,X,Primary Account Number (PAN)
+SALE,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+SALE,V,4,M,M,M,M,M,"Amount, Transaction"
+SALE,V,11,M,M,M,M,M,Systems Trace Audit Number
+SALE,V,12,O,O,O,O,O,"Time, Local Transaction"
+SALE,V,13,O,O,O,O,O,"Date, Local Transaction"
+SALE,V,14,X,X,X,M,X,"Date, Expiration"
+SALE,V,18,O,O,O,O,O,Merchant Type Code
+SALE,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+SALE,V,24,M,M,M,M,M,Network International Identifier (NII)
+SALE,V,25,50,50,50,50,50,Point-of-Service Condition Code
+SALE,V,28,O,O,O,O,O,Transaction Fee Amount
+SALE,V,35,M,M,M,X,M,Track 2 Data
+SALE,V,36,X,X,X,X,X,Track 3 Data
+SALE,V,37,X,X,X,X,X,Retrieval Reference Number
+SALE,V,38,X,X,X,X,X,Authorization Code
+SALE,V,39,X,X,X,X,X,Response Code
+SALE,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+SALE,V,42,M,M,M,M,M,Card Acceptor Identification Code
+SALE,V,48,O,O,O,O,O,Card Verification Data
+SALE,V,52,O,O,O,O,O,PIN Data
+SALE,V,53,O,O,O,O,O,Security Related Control Information
+SALE,V,54,O,O,O,O,O,Additional Amounts
+SALE,V,55,M,X,X,X,M,EMV Chip Data
+SALE,V,59,O,O,O,O,O,Card Authentication Data
+SALE,V,61,M,M,M,M,M,Additional POS Data
+SALE,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+SALE,V,63,M,M,M,M,M,Additional Data
+SALE,U,2,X,X,X,M,X,Primary Account Number (PAN)
+SALE,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+SALE,U,4,M,M,M,M,M,"Amount, Transaction"
+SALE,U,11,M,M,M,M,M,Systems Trace Audit Number
+SALE,U,12,O,O,O,O,O,"Time, Local Transaction"
+SALE,U,13,O,O,O,O,O,"Date, Local Transaction"
+SALE,U,14,X,X,X,M,X,"Date, Expiration"
+SALE,U,18,O,O,O,O,O,Merchant Type Code
+SALE,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+SALE,U,24,M,M,M,M,M,Network International Identifier (NII)
+SALE,U,25,50,50,50,50,50,Point-of-Service Condition Code
+SALE,U,28,O,O,O,O,O,Transaction Fee Amount
+SALE,U,35,M,M,M,X,M,Track 2 Data
+SALE,U,36,C,C,C,X,C,Track 3 Data
+SALE,U,37,X,X,X,X,X,Retrieval Reference Number
+SALE,U,38,X,X,X,X,X,Authorization Code
+SALE,U,39,X,X,X,X,X,Response Code
+SALE,U,41,M,M,M,M,M,Card Acceptor Terminal Identification
+SALE,U,42,M,M,M,M,M,Card Acceptor Identification Code
+SALE,U,48,O,O,O,O,O,Card Verification Data
+SALE,U,52,O,O,O,O,O,PIN Data
+SALE,U,53,O,O,O,O,O,Security Related Control Information
+SALE,U,54,O,O,O,O,O,Additional Amounts
+SALE,U,55,M,X,X,X,M,EMV Chip Data
+SALE,U,59,O,O,O,O,O,Card Authentication Data
+SALE,U,61,M,M,M,M,M,Additional POS Data
+SALE,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+SALE,U,63,M,M,M,M,M,Additional Data
+VOID,V,2,X,X,X,M,X,Primary Account Number (PAN)
+VOID,V,3,0230NN,0230NN,0230NN,0230NN,0230NN,Processing Code
+VOID,V,4,M,M,M,M,M,"Amount, Transaction"
+VOID,V,11,M,M,M,M,M,Systems Trace Audit Number
+VOID,V,12,O,O,O,O,O,"Time, Local Transaction"
+VOID,V,13,O,O,O,O,O,"Date, Local Transaction"
+VOID,V,14,X,X,X,M,X,"Date, Expiration"
+VOID,V,18,O,O,O,O,O,Merchant Type Code
+VOID,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+VOID,V,24,M,M,M,M,M,Network International Identifier (NII)
+VOID,V,25,50,50,50,50,50,Point-of-Service Condition Code
+VOID,V,28,O,O,O,O,O,Transaction Fee Amount
+VOID,V,35,M,M,M,X,M,Track 2 Data
+VOID,V,36,X,X,X,X,X,Track 3 Data
+VOID,V,37,M,M,M,M,M,Retrieval Reference Number
+VOID,V,38,X,X,X,X,X,Authorization Code
+VOID,V,39,X,X,X,X,X,Response Code
+VOID,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+VOID,V,42,M,M,M,M,M,Card Acceptor Identification Code
+VOID,V,48,O,O,O,O,O,Card Verification Data
+VOID,V,52,O,O,O,O,O,PIN Data
+VOID,V,53,O,O,O,O,O,Security Related Control Information
+VOID,V,54,O,O,O,O,O,Additional Amounts
+VOID,V,55,M,X,X,X,M,EMV Chip Data
+VOID,V,59,O,O,O,O,O,Card Authentication Data
+VOID,V,61,M,M,M,M,M,Additional POS Data
+VOID,V,62,M,M,M,M,M,Invoice/ECR Reference Number
+VOID,V,63,M,M,M,M,M,Additional Data
+VOID,U,2,X,X,X,M,X,Primary Account Number (PAN)
+VOID,U,3,0200NN,0200NN,0200NN,0200NN,0200NN,Processing Code
+VOID,U,4,M,M,M,M,M,"Amount, Transaction"
+VOID,U,11,M,M,M,M,M,Systems Trace Audit Number
+VOID,U,12,O,O,O,O,O,"Time, Local Transaction"
+VOID,U,13,O,O,O,O,O,"Date, Local Transaction"
+VOID,U,14,X,X,X,M,X,"Date, Expiration"
+VOID,U,18,O,O,O,O,O,Merchant Type Code
+VOID,U,22,01N,01N,01N,01N,01N,Point-of-Service Entry Mode
+VOID,U,24,M,M,M,M,M,Network International Identifier (NII)
+VOID,U,25,50,50,50,50,50,Point-of-Service Condition Code
+VOID,U,28,O,O,O,O,O,Transaction Fee Amount
+VOID,U,35,M,M,M,X,M,Track 2 Data
+VOID,U,36,O,O,O,O,O,Track 3 Data
+VOID,U,37,M,M,M,M,M,Retrieval Reference Number
+VOID,U,38,O,O,O,O,O,Authorization Code
+VOID,U,39,X,X,X,X,X,Response Code
+VOID,U,41,M,M,M,M,M,Card Acceptor Terminal Identification
+VOID,U,42,M,M,M,M,M,Card Acceptor Identification Code
+VOID,U,48,O,O,O,O,O,Card Verification Data
+VOID,U,52,O,O,O,O,O,PIN Data
+VOID,U,53,O,O,O,O,O,Security Related Control Information
+VOID,U,54,O,O,O,O,O,Additional Amounts
+VOID,U,55,M,X,X,X,M,EMV Chip Data
+VOID,U,59,O,O,O,O,O,Card Authentication Data
+VOID,U,61,M,M,M,M,M,Additional POS Data
+VOID,U,62,M,M,M,M,M,Invoice/ECR Reference Number
+VOID,U,63,M,M,M,M,M,Additional Data
+REFUND,V,2,X,X,X,M,X,Primary Account Number (PAN)
+REFUND,V,3,0230NN,0230NN,0230NN,0230NN,0230NN,Processing Code
+REFUND,V,4,M,M,M,M,M,"Amount, Transaction"
+REFUND,V,11,M,M,M,M,M,Systems Trace Audit Number
+REFUND,V,12,O,O,O,O,O,"Time, Local Transaction"
+REFUND,V,13,O,O,O,O,O,"Date, Local Transaction"
+REFUND,V,14,X,X,X,M,X,"Date, Expiration"
+REFUND,V,18,O,O,O,O,O,Merchant Type Code
+REFUND,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+REFUND,V,24,M,M,M,M,M,Network International Identifier (NII)
+REFUND,V,25,50,50,50,50,50,Point-of-Service Condition Code
+REFUND,V,28,O,O,O,O,O,Transaction Fee Amount
+REFUND,V,35,M,M,M,X,M,Track 2 Data
+REFUND,V,36,X,X,X,X,X,Track 3 Data
+REFUND,V,37,M,M,M,M,M,Retrieval Reference Number
+REFUND,V,38,O,O,O,O,O,Authorization Code
+REFUND,V,39,X,X,X,X,X,Response Code
+REFUND,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+REFUND,V,42,M,M,M,M,M,Card Acceptor Identification Code
+REFUND,V,48,O,O,O,O,O,Card Verification Data
+REFUND,V,52,O,O,O,O,O,PIN Data
+REFUND,V,53,O,O,O,O,O,Security Related Control Information
+REFUND,V,54,O,O,O,O,O,Additional Amounts
+REFUND,V,55,M,X,X,X,M,EMV Chip Data
+REFUND,V,59,O,O,O,O,O,Card Authentication Data
+REFUND,V,61,M,M,M,M,M,Additional POS Data
+REFUND,V,62,M,M,M,M,M,Invoice/ECR Reference Number
+REFUND,V,63,M,M,M,M,M,Additional Data
+REFUND,U,2,X,X,X,M,X,Primary Account Number (PAN)
+REFUND,U,3,2000NN,2000NN,2000NN,2000NN,2000NN,Processing Code
+REFUND,U,4,M,M,M,M,M,"Amount, Transaction"
+REFUND,U,11,M,M,M,M,M,Systems Trace Audit Number
+REFUND,U,12,O,O,O,O,O,"Time, Local Transaction"
+REFUND,U,13,O,O,O,O,O,"Date, Local Transaction"
+REFUND,U,14,X,X,X,M,X,"Date, Expiration"
+REFUND,U,18,O,O,O,O,O,Merchant Type Code
+REFUND,U,22,01N,01N,01N,01N,01N,Point-of-Service Entry Mode
+REFUND,U,24,M,M,M,M,M,Network International Identifier (NII)
+REFUND,U,25,50,50,50,50,50,Point-of-Service Condition Code
+REFUND,U,28,O,O,O,O,O,Transaction Fee Amount
+REFUND,U,35,M,M,M,X,M,Track 2 Data
+REFUND,U,36,O,O,O,O,O,Track 3 Data
+REFUND,U,37,M,M,M,M,M,Retrieval Reference Number
+REFUND,U,38,O,O,O,O,O,Authorization Code
+REFUND,U,39,X,X,X,X,X,Response Code
+REFUND,U,41,M,M,M,M,M,Card Acceptor Terminal Identification
+REFUND,U,42,M,M,M,M,M,Card Acceptor Identification Code
+REFUND,U,48,O,O,O,O,O,Card Verification Data
+REFUND,U,52,O,O,O,O,O,PIN Data
+REFUND,U,53,O,O,O,O,O,Security Related Control Information
+REFUND,U,54,O,O,O,O,O,Additional Amounts
+REFUND,U,55,M,X,X,X,M,EMV Chip Data
+REFUND,U,59,O,O,O,O,O,Card Authentication Data
+REFUND,U,61,M,M,M,M,M,Additional POS Data
+REFUND,U,62,M,M,M,M,M,Invoice/ECR Reference Number
+REFUND,U,63,M,M,M,M,M,Additional Data
+RVOID,V,2,X,X,X,M,X,Primary Account Number (PAN)
+RVOID,V,3,2230NN,2230NN,2230NN,2230NN,2230NN,Processing Code
+RVOID,V,4,M,M,M,M,M,"Amount, Transaction"
+RVOID,V,11,M,M,M,M,M,Systems Trace Audit Number
+RVOID,V,12,O,O,O,O,O,"Time, Local Transaction"
+RVOID,V,13,O,O,O,O,O,"Date, Local Transaction"
+RVOID,V,14,X,X,X,M,X,"Date, Expiration"
+RVOID,V,18,O,O,O,O,O,Merchant Type Code
+RVOID,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RVOID,V,24,M,M,M,M,M,Network International Identifier (NII)
+RVOID,V,25,50,50,50,50,50,Point-of-Service Condition Code
+RVOID,V,28,O,O,O,O,O,Transaction Fee Amount
+RVOID,V,35,M,M,M,X,M,Track 2 Data
+RVOID,V,36,X,X,X,X,X,Track 3 Data
+RVOID,V,37,M,M,M,M,M,Retrieval Reference Number
+RVOID,V,38,X,X,X,X,X,Authorization Code
+RVOID,V,39,X,X,X,X,X,Response Code
+RVOID,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+RVOID,V,42,M,M,M,M,M,Card Acceptor Identification Code
+RVOID,V,48,O,O,O,O,O,Card Verification Data
+RVOID,V,52,O,O,O,O,O,PIN Data
+RVOID,V,53,O,O,O,O,O,Security Related Control Information
+RVOID,V,54,O,O,O,O,O,Additional Amounts
+RVOID,V,55,M,X,X,X,M,EMV Chip Data
+RVOID,V,59,O,O,O,O,O,Card Authentication Data
+RVOID,V,61,M,M,M,M,M,Additional POS Data
+RVOID,V,62,M,M,M,M,M,Invoice/ECR Reference Number
+RVOID,V,63,M,M,M,M,M,Additional Data
+COMPLETION,V,2,X,X,X,M,X,Primary Account Number (PAN)
+COMPLETION,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+COMPLETION,V,4,M,M,M,M,M,"Amount, Transaction"
+COMPLETION,V,11,M,M,M,M,M,Systems Trace Audit Number
+COMPLETION,V,12,M,M,M,M,M,"Time, Local Transaction"
+COMPLETION,V,13,M,M,M,M,M,"Date, Local Transaction"
+COMPLETION,V,14,X,X,X,M,X,"Date, Expiration"
+COMPLETION,V,18,O,O,O,O,O,Merchant Type Code
+COMPLETION,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+COMPLETION,V,24,M,M,M,M,M,Network International Identifier (NII)
+COMPLETION,V,25,50,50,50,50,50,Point-of-Service Condition Code
+COMPLETION,V,28,O,O,O,O,O,Transaction Fee Amount
+COMPLETION,V,35,M,M,M,X,M,Track 2 Data
+COMPLETION,V,36,X,X,X,X,X,Track 3 Data
+COMPLETION,V,37,M,M,M,M,M,Retrieval Reference Number
+COMPLETION,V,38,M,M,M,M,M,Authorization Code
+COMPLETION,V,39,Y1/Y3,0,0,0,Y1/Y3,Response Code
+COMPLETION,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+COMPLETION,V,42,M,M,M,M,M,Card Acceptor Identification Code
+COMPLETION,V,52,X,X,X,X,X,PIN Data
+COMPLETION,V,53,X,X,X,X,X,Security Related Control Information
+COMPLETION,V,54,O,O,O,O,O,Additional Amounts
+COMPLETION,V,55,M,X,X,X,M,EMV Chip Data
+COMPLETION,V,59,X,X,X,X,X,Card Authentication Data
+COMPLETION,V,60,X,X,X,X,X,POS Data
+COMPLETION,V,61,M,M,M,M,M,Additional POS Data
+COMPLETION,V,62,X,X,X,X,X,Invoice/ECR Reference Number
+COMPLETION,V,63,M,M,M,M,M,Additional Data
+COMPLETION,U,2,X,X,X,M,X,Primary Account Number (PAN)
+COMPLETION,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+COMPLETION,U,4,M,M,M,M,M,"Amount, Transaction"
+COMPLETION,U,11,M,M,M,M,M,Systems Trace Audit Number
+COMPLETION,U,12,M,M,M,M,M,"Time, Local Transaction"
+COMPLETION,U,13,M,M,M,M,M,"Date, Local Transaction"
+COMPLETION,U,14,X,X,X,M,X,"Date, Expiration"
+COMPLETION,U,18,O,O,O,O,O,Merchant Type Code
+COMPLETION,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+COMPLETION,U,24,M,M,M,M,M,Network International Identifier (NII)
+COMPLETION,U,25,56,56,56,56,56,Point-of-Service Condition Code
+COMPLETION,U,28,O,O,O,O,O,Transaction Fee Amount
+COMPLETION,U,35,M,M,M,X,M,Track 2 Data
+COMPLETION,U,36,O,O,O,X,O,Track 3 Data
+COMPLETION,U,37,M,M,M,M,M,Retrieval Reference Number
+COMPLETION,U,38,M,M,M,M,M,Authorization Code
+COMPLETION,U,39,O,O,O,O,O,Response Code
+COMPLETION,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+COMPLETION,U,42,M,M,M,M,M,Card Acceptor Identification Code
+COMPLETION,U,52,X,X,X,X,X,PIN Data
+COMPLETION,U,53,X,X,X,X,X,Security Related Control Information
+COMPLETION,U,54,O,O,O,O,O,Additional Amounts
+COMPLETION,U,55,M,X,X,X,M,EMV Chip Data
+COMPLETION,U,59,O,O,O,O,O,Card Authentication Data
+COMPLETION,U,60,X,X,X,X,X,POS Data
+COMPLETION,U,61,M,M,M,M,M,Additional POS Data
+COMPLETION,U,62,X,X,X,X,X,Invoice/ECR Reference Number
+COMPLETION,U,63,M,M,M,M,M,Additional Data
+SALEADJ,V,2,X,X,X,M,X,Primary Account Number (PAN)
+SALEADJ,V,3,0230NN,0230NN,0230NN,0230NN,0230NN,Processing Code
+SALEADJ,V,4,M,M,M,M,M,"Amount, Transaction"
+SALEADJ,V,11,M,M,M,M,M,Systems Trace Audit Number
+SALEADJ,V,12,M,M,M,M,M,"Time, Local Transaction"
+SALEADJ,V,13,M,M,M,M,M,"Date, Local Transaction"
+SALEADJ,V,14,X,X,X,M,X,"Date, Expiration"
+SALEADJ,V,18,O,O,O,O,O,Merchant Type Code
+SALEADJ,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+SALEADJ,V,24,M,M,M,M,M,Network International Identifier (NII)
+SALEADJ,V,25,50,50,50,50,50,Point-of-Service Condition Code
+SALEADJ,V,28,O,O,O,O,O,Transaction Fee Amount
+SALEADJ,V,35,M,M,M,X,M,Track 2 Data
+SALEADJ,V,36,X,X,X,X,X,Track 3 Data
+SALEADJ,V,37,M,M,M,M,M,Retrieval Reference Number
+SALEADJ,V,38,M,M,M,M,M,Authorization Code
+SALEADJ,V,39,X,X,X,X,X,Response Code
+SALEADJ,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+SALEADJ,V,42,M,M,M,M,M,Card Acceptor Identification Code
+SALEADJ,V,52,X,X,X,X,X,PIN Data
+SALEADJ,V,53,X,X,X,X,X,Security Related Control Information
+SALEADJ,V,54,M,M,M,M,M,Additional Amounts
+SALEADJ,V,55,M,X,X,X,M,EMV Chip Data
+SALEADJ,V,59,X,X,X,X,X,Card Authentication Data
+SALEADJ,V,60,M,M,M,M,M,POS Data
+SALEADJ,V,61,M,M,M,M,M,Additional POS Data
+SALEADJ,V,62,M,M,M,M,M,Invoice/ECR Reference Number
+SALEADJ,V,63,M,M,M,M,M,Additional Data
+TCUPLOAD,V,2,M,X,X,X,M,Primary Account Number (PAN)
+TCUPLOAD,V,3,9430NN,X,X,X,9430NN,Processing Code
+TCUPLOAD,V,4,M,X,X,X,M,"Amount, Transaction"
+TCUPLOAD,V,11,M,X,X,X,M,Systems Trace Audit Number
+TCUPLOAD,V,12,M,X,X,X,M,"Time, Local Transaction"
+TCUPLOAD,V,13,M,X,X,X,M,"Date, Local Transaction"
+TCUPLOAD,V,14,O,X,X,X,O,"Date, Expiration"
+TCUPLOAD,V,22,05N,X,X,X,07N,Point-of-Service Entry Mode
+TCUPLOAD,V,24,M,X,X,X,M,Network International Identifier (NII)
+TCUPLOAD,V,25,50,X,X,X,50,Point-of-Service Condition Code
+TCUPLOAD,V,37,M,X,X,X,M,Retrieval Reference Number
+TCUPLOAD,V,38,O,X,X,X,O,Authorization Code
+TCUPLOAD,V,39,O,X,X,X,O,Response Code
+TCUPLOAD,V,41,O,X,X,X,O,Card Acceptor Terminal Identification
+TCUPLOAD,V,42,M,X,X,X,M,Card Acceptor Identification Code
+TCUPLOAD,V,54,O,X,X,X,O,Additional Amounts
+TCUPLOAD,V,55,M,X,X,X,M,EMV Chip Data
+TCUPLOAD,V,60,M,X,X,X,M,POS Data
+TCUPLOAD,V,61,M,X,X,X,M,Additional POS Data
+TCUPLOAD,V,63,M,X,X,X,M,Additional Data
+TCUPLOAD,U,2,M,X,X,X,M,Primary Account Number (PAN)
+TCUPLOAD,U,3,9400NN,X,X,X,9400NN,Processing Code
+TCUPLOAD,U,4,M,X,X,X,M,"Amount, Transaction"
+TCUPLOAD,U,11,M,X,X,X,M,Systems Trace Audit Number
+TCUPLOAD,U,12,M,X,X,X,M,"Time, Local Transaction"
+TCUPLOAD,U,13,M,X,X,X,M,"Date, Local Transaction"
+TCUPLOAD,U,14,O,X,X,X,O,"Date, Expiration"
+TCUPLOAD,U,22,05N,X,X,X,07N,Point-of-Service Entry Mode
+TCUPLOAD,U,24,M,X,X,X,M,Network International Identifier (NII)
+TCUPLOAD,U,25,50,X,X,X,50,Point-of-Service Condition Code
+TCUPLOAD,U,28,O,X,X,X,O,Retrieval Reference Number
+TCUPLOAD,U,38,O,X,X,X,O,Authorization Code
+TCUPLOAD,U,39,M,X,X,X,M,Response Code
+TCUPLOAD,U,41,O,X,X,X,O,Card Acceptor Terminal Identification
+TCUPLOAD,U,42,M,X,X,X,M,Card Acceptor Identification Code
+TCUPLOAD,U,54,O,X,X,X,O,Additional Amounts
+TCUPLOAD,U,55,M,X,X,X,M,EMV Chip Data
+TCUPLOAD,U,60,M,X,X,X,M,POS Data
+TCUPLOAD,U,61,M,X,X,X,M,Additional POS Data
+TCUPLOAD,U,63,M,X,X,X,M,Additional Data
+RSALE,V,2,M,X,M,M,M,Primary Account Number (PAN)
+RSALE,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+RSALE,V,4,M,M,M,M,M,"Amount, Transaction"
+RSALE,V,11,M,M,M,M,M,Systems Trace Audit Number
+RSALE,V,12,M,M,M,M,M,"Time, Local Transaction"
+RSALE,V,13,M,M,M,M,M,"Date, Local Transaction"
+RSALE,V,14,M,X,M,M,M,"Date, Expiration"
+RSALE,V,18,O,O,O,O,O,Merchant Type Code
+RSALE,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RSALE,V,24,M,M,M,M,M,Network International Identifier (NII)
+RSALE,V,25,50,50,50,50,50,Point-of-Service Condition Code
+RSALE,V,28,O,O,O,O,O,Transaction Fee Amount
+RSALE,V,35,M,M,M,X,M,Track 2 Data
+RSALE,V,37,M,M,M,M,M,Retrieval Reference Number
+RSALE,V,38,O,O,O,O,O,Authorization Code
+RSALE,V,39,O,O,O,O,O,Response Code
+RSALE,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RSALE,V,42,M,M,M,M,M,Card Acceptor Identification Code
+RSALE,V,54,M,M,M,M,M,Additional Amounts
+RSALE,V,55,M,X,X,X,M,EMV Chip Data
+RSALE,V,60,M,M,M,M,M,POS Data
+RSALE,V,61,M,M,M,M,M,Additional POS Data
+RSALE,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+RSALE,V,63,M,M,M,M,M,Additional Data
+RSALE,U,2,M,X,M,M,M,Primary Account Number (PAN)
+RSALE,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+RSALE,U,4,M,M,M,M,M,"Amount, Transaction"
+RSALE,U,11,M,M,M,M,M,Systems Trace Audit Number
+RSALE,U,12,M,M,M,M,M,"Time, Local Transaction"
+RSALE,U,13,M,M,M,M,M,"Date, Local Transaction"
+RSALE,U,14,M,X,M,M,M,"Date, Expiration"
+RSALE,U,18,O,O,O,O,O,Merchant Type Code
+RSALE,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RSALE,U,24,M,M,M,M,M,Network International Identifier (NII)
+RSALE,U,25,50,50,50,50,50,Point-of-Service Condition Code
+RSALE,U,28,O,O,O,O,O,Transaction Fee Amount
+RSALE,U,35,M,M,M,X,M,Track 2 Data
+RSALE,U,37,M,M,M,M,M,Retrieval Reference Number
+RSALE,U,38,O,O,O,O,O,Authorization Code
+RSALE,U,39,O,O,O,O,O,Response Code
+RSALE,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RSALE,U,42,M,M,M,M,M,Card Acceptor Identification Code
+RSALE,U,54,O,O,O,O,O,Additional Amounts
+RSALE,U,55,M,X,X,X,M,EMV Chip Data
+RSALE,U,60,M,M,M,M,M,POS Data
+RSALE,U,61,M,M,M,M,M,Additional POS Data
+RSALE,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+RSALE,U,63,M,M,M,M,M,Additional Data
+RPREAUTH,V,2,M,X,M,M,M,Primary Account Number (PAN)
+RPREAUTH,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+RPREAUTH,V,4,M,M,M,M,M,"Amount, Transaction"
+RPREAUTH,V,11,M,M,M,M,M,Systems Trace Audit Number
+RPREAUTH,V,12,M,M,M,M,M,"Time, Local Transaction"
+RPREAUTH,V,13,M,M,M,M,M,"Date, Local Transaction"
+RPREAUTH,V,14,M,X,M,M,M,"Date, Expiration"
+RPREAUTH,V,18,O,O,O,O,O,Merchant Type Code
+RPREAUTH,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RPREAUTH,V,24,M,M,M,M,M,Network International Identifier (NII)
+RPREAUTH,V,25,50,50,50,50,50,Point-of-Service Condition Code
+RPREAUTH,V,28,O,O,O,O,O,Transaction Fee Amount
+RPREAUTH,V,35,M,M,M,X,M,Track 2 Data
+RPREAUTH,V,37,M,M,M,M,M,Retrieval Reference Number
+RPREAUTH,V,38,O,O,O,O,O,Authorization Code
+RPREAUTH,V,39,O,O,O,O,O,Response Code
+RPREAUTH,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RPREAUTH,V,42,M,M,M,M,M,Card Acceptor Identification Code
+RPREAUTH,V,54,M,M,M,M,M,Additional Amounts
+RPREAUTH,V,55,M,X,X,X,M,EMV Chip Data
+RPREAUTH,V,60,M,M,M,M,M,POS Data
+RPREAUTH,V,61,M,M,M,M,M,Additional POS Data
+RPREAUTH,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+RPREAUTH,V,63,M,M,M,M,M,Additional Data
+RPREAUTH,U,2,M,X,M,M,M,Primary Account Number (PAN)
+RPREAUTH,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+RPREAUTH,U,4,M,M,M,M,M,"Amount, Transaction"
+RPREAUTH,U,11,M,M,M,M,M,Systems Trace Audit Number
+RPREAUTH,U,12,M,M,M,M,M,"Time, Local Transaction"
+RPREAUTH,U,13,M,M,M,M,M,"Date, Local Transaction"
+RPREAUTH,U,14,M,X,M,M,M,"Date, Expiration"
+RPREAUTH,U,18,O,O,O,O,O,Merchant Type Code
+RPREAUTH,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RPREAUTH,U,24,M,M,M,M,M,Network International Identifier (NII)
+RPREAUTH,U,25,50,50,50,50,50,Point-of-Service Condition Code
+RPREAUTH,U,28,O,O,O,O,O,Transaction Fee Amount
+RPREAUTH,U,35,M,M,M,X,M,Track 2 Data
+RPREAUTH,U,37,M,M,M,M,M,Retrieval Reference Number
+RPREAUTH,U,38,O,O,O,O,O,Authorization Code
+RPREAUTH,U,39,O,O,O,O,O,Response Code
+RPREAUTH,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RPREAUTH,U,42,M,M,M,M,M,Card Acceptor Identification Code
+RPREAUTH,U,54,O,O,O,O,O,Additional Amounts
+RPREAUTH,U,55,M,X,X,X,M,EMV Chip Data
+RPREAUTH,U,60,M,M,M,M,M,POS Data
+RPREAUTH,U,61,M,M,M,M,M,Additional POS Data
+RPREAUTH,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+RPREAUTH,U,63,M,M,M,M,M,Additional Data
+RVOID,V,2,M,X,M,M,M,Primary Account Number (PAN)
+RVOID,V,3,0230NN,0230NN,0230NN,0230NN,0230NN,Processing Code
+RVOID,V,4,M,M,M,M,M,"Amount, Transaction"
+RVOID,V,11,M,M,M,M,M,Systems Trace Audit Number
+RVOID,V,12,M,M,M,M,M,"Time, Local Transaction"
+RVOID,V,13,M,M,M,M,M,"Date, Local Transaction"
+RVOID,V,14,M,X,M,M,M,"Date, Expiration"
+RVOID,V,18,O,O,O,O,O,Merchant Type Code
+RVOID,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RVOID,V,24,M,M,M,M,M,Network International Identifier (NII)
+RVOID,V,25,50,50,50,50,50,Point-of-Service Condition Code
+RVOID,V,28,O,O,O,O,O,Transaction Fee Amount
+RVOID,V,35,M,M,M,X,M,Track 2 Data
+RVOID,V,37,M,M,M,M,M,Retrieval Reference Number
+RVOID,V,38,O,O,O,O,O,Authorization Code
+RVOID,V,39,O,O,O,O,O,Response Code
+RVOID,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RVOID,V,42,M,M,M,M,M,Card Acceptor Identification Code
+RVOID,V,54,M,M,M,M,M,Additional Amounts
+RVOID,V,55,M,X,X,X,M,EMV Chip Data
+RVOID,V,60,M,M,M,M,M,POS Data
+RVOID,V,61,M,M,M,M,M,Additional POS Data
+RVOID,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+RVOID,V,63,M,M,M,M,M,Additional Data
+RVOID,U,2,M,X,M,M,M,Primary Account Number (PAN)
+RVOID,U,3,0200NN,0200NN,0200NN,0200NN,0200NN,Processing Code
+RVOID,U,4,M,M,M,M,M,"Amount, Transaction"
+RVOID,U,11,M,M,M,M,M,Systems Trace Audit Number
+RVOID,U,12,M,M,M,M,M,"Time, Local Transaction"
+RVOID,U,13,M,M,M,M,M,"Date, Local Transaction"
+RVOID,U,14,M,X,M,M,M,"Date, Expiration"
+RVOID,U,18,O,O,O,O,O,Merchant Type Code
+RVOID,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RVOID,U,24,M,M,M,M,M,Network International Identifier (NII)
+RVOID,U,25,50,50,50,50,50,Point-of-Service Condition Code
+RVOID,U,28,O,O,O,O,O,Transaction Fee Amount
+RVOID,U,35,M,M,M,X,M,Track 2 Data
+RVOID,U,37,M,M,M,M,M,Retrieval Reference Number
+RVOID,U,38,O,O,O,O,O,Authorization Code
+RVOID,U,39,O,O,O,O,O,Response Code
+RVOID,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RVOID,U,42,M,M,M,M,M,Card Acceptor Identification Code
+RVOID,U,54,O,O,O,O,O,Additional Amounts
+RVOID,U,55,M,X,X,X,M,EMV Chip Data
+RVOID,U,60,M,M,M,M,M,POS Data
+RVOID,U,61,M,M,M,M,M,Additional POS Data
+RVOID,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+RVOID,U,63,M,M,M,M,M,Additional Data
+RREFUND,V,2,M,X,M,M,M,Primary Account Number (PAN)
+RREFUND,V,3,2030NN,2030NN,2030NN,2030NN,2030NN,Processing Code
+RREFUND,V,4,M,M,M,M,M,"Amount, Transaction"
+RREFUND,V,11,M,M,M,M,M,Systems Trace Audit Number
+RREFUND,V,12,M,M,M,M,M,"Time, Local Transaction"
+RREFUND,V,13,M,M,M,M,M,"Date, Local Transaction"
+RREFUND,V,14,M,X,M,M,M,"Date, Expiration"
+RREFUND,V,18,O,O,O,O,O,Merchant Type Code
+RREFUND,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RREFUND,V,24,M,M,M,M,M,Network International Identifier (NII)
+RREFUND,V,25,50,50,50,50,50,Point-of-Service Condition Code
+RREFUND,V,28,O,O,O,O,O,Transaction Fee Amount
+RREFUND,V,35,M,M,M,X,M,Track 2 Data
+RREFUND,V,37,M,M,M,M,M,Retrieval Reference Number
+RREFUND,V,38,O,O,O,O,O,Authorization Code
+RREFUND,V,39,O,O,O,O,O,Response Code
+RREFUND,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RREFUND,V,42,M,M,M,M,M,Card Acceptor Identification Code
+RREFUND,V,54,M,M,M,M,M,Additional Amounts
+RREFUND,V,55,M,X,X,X,M,EMV Chip Data
+RREFUND,V,60,M,M,M,M,M,POS Data
+RREFUND,V,61,M,M,M,M,M,Additional POS Data
+RREFUND,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+RREFUND,V,63,M,M,M,M,M,Additional Data
+RREFUND,U,2,M,X,M,M,M,Primary Account Number (PAN)
+RREFUND,U,3,2000NN,2000NN,2000NN,2000NN,2000NN,Processing Code
+RREFUND,U,4,M,M,M,M,M,"Amount, Transaction"
+RREFUND,U,11,M,M,M,M,M,Systems Trace Audit Number
+RREFUND,U,12,M,M,M,M,M,"Time, Local Transaction"
+RREFUND,U,13,M,M,M,M,M,"Date, Local Transaction"
+RREFUND,U,14,M,X,M,M,M,"Date, Expiration"
+RREFUND,U,18,O,O,O,O,O,Merchant Type Code
+RREFUND,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RREFUND,U,24,M,M,M,M,M,Network International Identifier (NII)
+RREFUND,U,25,50,50,50,50,50,Point-of-Service Condition Code
+RREFUND,U,28,O,O,O,O,O,Transaction Fee Amount
+RREFUND,U,35,M,M,M,X,M,Track 2 Data
+RREFUND,U,37,M,M,M,M,M,Retrieval Reference Number
+RREFUND,U,38,O,O,O,O,O,Authorization Code
+RREFUND,U,39,O,O,O,O,O,Response Code
+RREFUND,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RREFUND,U,42,M,M,M,M,M,Card Acceptor Identification Code
+RREFUND,U,54,M,M,M,M,M,Additional Amounts
+RREFUND,U,55,M,X,X,X,M,EMV Chip Data
+RREFUND,U,60,M,M,M,M,M,POS Data
+RREFUND,U,61,M,M,M,M,M,Additional POS Data
+RREFUND,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+RREFUND,U,63,M,M,M,M,M,Additional Data
+SALETIP,V,2,X,X,X,M,X,Primary Account Number (PAN)
+SALETIP,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+SALETIP,V,4,M,M,M,M,M,"Amount, Transaction"
+SALETIP,V,11,M,M,M,M,M,Systems Trace Audit Number
+SALETIP,V,12,O,O,O,O,O,"Time, Local Transaction"
+SALETIP,V,13,O,O,O,O,O,"Date, Local Transaction"
+SALETIP,V,14,X,X,X,M,X,"Date, Expiration"
+SALETIP,V,18,O,O,O,O,O,Merchant Type Code
+SALETIP,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+SALETIP,V,24,M,M,M,M,M,Network International Identifier (NII)
+SALETIP,V,25,50,50,50,50,50,Point-of-Service Condition Code
+SALETIP,V,28,O,O,O,O,O,Transaction Fee Amount
+SALETIP,V,35,M,M,M,X,M,Track 2 Data
+SALETIP,V,36,X,X,X,X,X,Track 3 Data
+SALETIP,V,37,X,X,X,X,X,Retrieval Reference Number
+SALETIP,V,38,X,X,X,X,X,Authorization Code
+SALETIP,V,39,X,X,X,X,X,Response Code
+SALETIP,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+SALETIP,V,42,M,M,M,M,M,Card Acceptor Identification Code
+SALETIP,V,48,O,O,O,O,O,Card Verification Data
+SALETIP,V,52,O,O,O,O,O,PIN Data
+SALETIP,V,53,O,O,O,O,O,Security Related Control Information
+SALETIP,V,54,M,M,M,M,M,Additional Amounts
+SALETIP,V,55,M,X,X,X,M,EMV Chip Data
+SALETIP,V,59,O,O,O,O,O,Card Authentication Data
+SALETIP,V,61,M,M,M,M,M,Additional POS Data
+SALETIP,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+SALETIP,V,63,M,M,M,M,M,Additional Data
+SALETIP,U,2,X,X,X,M,X,Primary Account Number (PAN)
+SALETIP,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+SALETIP,U,4,M,M,M,M,M,"Amount, Transaction"
+SALETIP,U,11,M,M,M,M,M,Systems Trace Audit Number
+SALETIP,U,12,O,O,O,O,O,"Time, Local Transaction"
+SALETIP,U,13,O,O,O,O,O,"Date, Local Transaction"
+SALETIP,U,14,X,X,X,M,X,"Date, Expiration"
+SALETIP,U,18,O,O,O,O,O,Merchant Type Code
+SALETIP,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+SALETIP,U,24,M,M,M,M,M,Network International Identifier (NII)
+SALETIP,U,25,50,50,50,50,50,Point-of-Service Condition Code
+SALETIP,U,28,O,O,O,O,O,Transaction Fee Amount
+SALETIP,U,35,M,M,M,X,M,Track 2 Data
+SALETIP,U,36,C,C,C,X,C,Track 3 Data
+SALETIP,U,37,X,X,X,X,X,Retrieval Reference Number
+SALETIP,U,38,X,X,X,X,X,Authorization Code
+SALETIP,U,39,X,X,X,X,X,Response Code
+SALETIP,U,41,M,M,M,M,M,Card Acceptor Terminal Identification
+SALETIP,U,42,M,M,M,M,M,Card Acceptor Identification Code
+SALETIP,U,48,O,O,O,O,O,Card Verification Data
+SALETIP,U,52,O,O,O,O,O,PIN Data
+SALETIP,U,53,O,O,O,O,O,Security Related Control Information
+SALETIP,U,54,M,M,M,M,M,Additional Amounts
+SALETIP,U,55,M,X,X,X,M,EMV Chip Data
+SALETIP,U,59,O,O,O,O,O,Card Authentication Data
+SALETIP,U,61,M,M,M,M,M,Additional POS Data
+SALETIP,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+SALETIP,U,63,M,M,M,M,M,Additional Data
+HSBC,V,2,X,X,X,M,X,Primary Account Number (PAN)
+HSBC,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+HSBC,V,4,M,M,M,M,M,"Amount, Transaction"
+HSBC,V,11,M,M,M,M,M,Systems Trace Audit Number
+HSBC,V,12,O,O,O,O,O,"Time, Local Transaction"
+HSBC,V,13,O,O,O,O,O,"Date, Local Transaction"
+HSBC,V,14,X,X,X,M,X,"Date, Expiration"
+HSBC,V,18,O,O,O,O,O,Merchant Type Code
+HSBC,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+HSBC,V,24,M,M,M,M,M,Network International Identifier (NII)
+HSBC,V,25,50,50,50,50,50,Point-of-Service Condition Code
+HSBC,V,28,O,O,O,O,O,Transaction Fee Amount
+HSBC,V,35,M,M,M,X,M,Track 2 Data
+HSBC,V,36,X,X,X,X,X,Track 3 Data
+HSBC,V,37,X,X,X,X,X,Retrieval Reference Number
+HSBC,V,38,X,X,X,X,X,Authorization Code
+HSBC,V,39,X,X,X,X,X,Response Code
+HSBC,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+HSBC,V,42,M,M,M,M,M,Card Acceptor Identification Code
+HSBC,V,48,O,O,O,O,O,Card Verification Data
+HSBC,V,52,O,O,O,O,O,PIN Data
+HSBC,V,53,O,O,O,O,O,Security Related Control Information
+HSBC,V,54,M,M,M,M,M,Additional Amounts
+HSBC,V,55,M,X,X,X,M,EMV Chip Data
+HSBC,V,59,O,O,O,O,O,Card Authentication Data
+HSBC,V,61,M,M,M,M,M,Additional POS Data
+HSBC,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+HSBC,V,63,M,M,M,M,M,Additional Data
+BPI,V,2,X,X,X,M,X,Primary Account Number (PAN)
+BPI,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+BPI,V,4,M,M,M,M,M,"Amount, Transaction"
+BPI,V,11,M,M,M,M,M,Systems Trace Audit Number
+BPI,V,12,O,O,O,O,O,"Time, Local Transaction"
+BPI,V,13,O,O,O,O,O,"Date, Local Transaction"
+BPI,V,14,X,X,X,M,X,"Date, Expiration"
+BPI,V,18,O,O,O,O,O,Merchant Type Code
+BPI,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+BPI,V,24,M,M,M,M,M,Network International Identifier (NII)
+BPI,V,25,50,50,50,50,50,Point-of-Service Condition Code
+BPI,V,28,O,O,O,O,O,Transaction Fee Amount
+BPI,V,35,M,M,M,X,M,Track 2 Data
+BPI,V,36,X,X,X,X,X,Track 3 Data
+BPI,V,37,X,X,X,X,X,Retrieval Reference Number
+BPI,V,38,X,X,X,X,X,Authorization Code
+BPI,V,39,X,X,X,X,X,Response Code
+BPI,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+BPI,V,42,M,M,M,M,M,Card Acceptor Identification Code
+BPI,V,48,O,O,O,O,O,Card Verification Data
+BPI,V,52,O,O,O,O,O,PIN Data
+BPI,V,53,O,O,O,O,O,Security Related Control Information
+BPI,V,54,M,M,M,M,M,Additional Amounts
+BPI,V,55,M,X,X,X,M,EMV Chip Data
+BPI,V,59,O,O,O,O,O,Card Authentication Data
+BPI,V,61,M,M,M,M,M,Additional POS Data
+BPI,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+BPI,V,63,M,M,M,M,M,Additional Data
+BPIOPT,V,2,X,X,X,M,X,Primary Account Number (PAN)
+BPIOPT,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+BPIOPT,V,4,M,M,M,M,M,"Amount, Transaction"
+BPIOPT,V,11,M,M,M,M,M,Systems Trace Audit Number
+BPIOPT,V,12,O,O,O,O,O,"Time, Local Transaction"
+BPIOPT,V,13,O,O,O,O,O,"Date, Local Transaction"
+BPIOPT,V,14,X,X,X,M,X,"Date, Expiration"
+BPIOPT,V,18,O,O,O,O,O,Merchant Type Code
+BPIOPT,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+BPIOPT,V,24,M,M,M,M,M,Network International Identifier (NII)
+BPIOPT,V,25,50,50,50,50,50,Point-of-Service Condition Code
+BPIOPT,V,28,O,O,O,O,O,Transaction Fee Amount
+BPIOPT,V,35,M,M,M,X,M,Track 2 Data
+BPIOPT,V,36,X,X,X,X,X,Track 3 Data
+BPIOPT,V,37,X,X,X,X,X,Retrieval Reference Number
+BPIOPT,V,38,X,X,X,X,X,Authorization Code
+BPIOPT,V,39,X,X,X,X,X,Response Code
+BPIOPT,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+BPIOPT,V,42,M,M,M,M,M,Card Acceptor Identification Code
+BPIOPT,V,48,O,O,O,O,O,Card Verification Data
+BPIOPT,V,52,O,O,O,O,O,PIN Data
+BPIOPT,V,53,O,O,O,O,O,Security Related Control Information
+BPIOPT,V,54,M,M,M,M,M,Additional Amounts
+BPIOPT,V,55,M,X,X,X,M,EMV Chip Data
+BPIOPT,V,59,O,O,O,O,O,Card Authentication Data
+BPIOPT,V,61,M,M,M,M,M,Additional POS Data
+BPIOPT,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+BPIOPT,V,63,M,M,M,M,M,Additional Data
+MIPP,V,2,X,X,X,M,X,Primary Account Number (PAN)
+MIPP,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+MIPP,V,4,M,M,M,M,M,"Amount, Transaction"
+MIPP,V,11,M,M,M,M,M,Systems Trace Audit Number
+MIPP,V,12,O,O,O,O,O,"Time, Local Transaction"
+MIPP,V,13,O,O,O,O,O,"Date, Local Transaction"
+MIPP,V,14,X,X,X,M,X,"Date, Expiration"
+MIPP,V,18,O,O,O,O,O,Merchant Type Code
+MIPP,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+MIPP,V,24,M,M,M,M,M,Network International Identifier (NII)
+MIPP,V,25,50,50,50,50,50,Point-of-Service Condition Code
+MIPP,V,28,O,O,O,O,O,Transaction Fee Amount
+MIPP,V,35,M,M,M,X,M,Track 2 Data
+MIPP,V,36,X,X,X,X,X,Track 3 Data
+MIPP,V,37,X,X,X,X,X,Retrieval Reference Number
+MIPP,V,38,X,X,X,X,X,Authorization Code
+MIPP,V,39,X,X,X,X,X,Response Code
+MIPP,V,41,M,M,M,M,M,Card Acceptor Terminal Identification
+MIPP,V,42,M,M,M,M,M,Card Acceptor Identification Code
+MIPP,V,48,O,O,O,O,O,Card Verification Data
+MIPP,V,52,O,O,O,O,O,PIN Data
+MIPP,V,53,O,O,O,O,O,Security Related Control Information
+MIPP,V,54,M,M,M,M,M,Additional Amounts
+MIPP,V,55,M,X,X,X,M,EMV Chip Data
+MIPP,V,59,O,O,O,O,O,Card Authentication Data
+MIPP,V,61,M,M,M,M,M,Additional POS Data
+MIPP,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+MIPP,V,63,M,M,M,M,M,Additional Data
+RCOMPLETION,U,2,M,X,M,M,M,Primary Account Number (PAN)
+RCOMPLETION,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+RCOMPLETION,U,4,M,M,M,M,M,"Amount, Transaction"
+RCOMPLETION,U,11,M,M,M,M,M,Systems Trace Audit Number
+RCOMPLETION,U,12,M,M,M,M,M,"Time, Local Transaction"
+RCOMPLETION,U,13,M,M,M,M,M,"Date, Local Transaction"
+RCOMPLETION,U,14,M,X,M,M,M,"Date, Expiration"
+RCOMPLETION,U,18,O,O,O,O,O,Merchant Type Code
+RCOMPLETION,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+RCOMPLETION,U,24,M,M,M,M,M,Network International Identifier (NII)
+RCOMPLETION,U,25,50,50,50,50,50,Point-of-Service Condition Code
+RCOMPLETION,U,28,O,O,O,O,O,Transaction Fee Amount
+RCOMPLETION,U,35,M,M,M,X,M,Track 2 Data
+RCOMPLETION,U,37,M,M,M,M,M,Retrieval Reference Number
+RCOMPLETION,U,38,O,O,O,O,O,Authorization Code
+RCOMPLETION,U,39,O,O,O,O,O,Response Code
+RCOMPLETION,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+RCOMPLETION,U,42,M,M,M,M,M,Card Acceptor Identification Code
+RCOMPLETION,U,54,O,O,O,O,O,Additional Amounts
+RCOMPLETION,U,55,M,X,X,X,M,EMV Chip Data
+RCOMPLETION,U,60,M,M,M,M,M,POS Data
+RCOMPLETION,U,61,M,M,M,M,M,Additional POS Data
+RCOMPLETION,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+RCOMPLETION,U,63,M,M,M,M,M,Additional Data
+CVOID,V,2,M,X,M,M,M,Primary Account Number (PAN)
+CVOID,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+CVOID,V,4,M,M,M,M,M,"Amount, Transaction"
+CVOID,V,11,M,M,M,M,M,Systems Trace Audit Number
+CVOID,V,12,M,M,M,M,M,"Time, Local Transaction"
+CVOID,V,13,M,M,M,M,M,"Date, Local Transaction"
+CVOID,V,14,X,X,X,M,X,"Date, Expiration"
+CVOID,V,18,O,O,O,O,O,Merchant Type Code
+CVOID,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+CVOID,V,24,M,M,M,M,M,Network International Identifier (NII)
+CVOID,V,25,50,50,50,50,50,Point-of-Service Condition Code
+CVOID,V,28,O,O,O,O,O,Transaction Fee Amount
+CVOID,V,35,M,M,M,X,M,Track 2 Data
+CVOID,V,36,X,X,X,X,X,Track 3 Data
+CVOID,V,37,M,M,M,M,M,Retrieval Reference Number
+CVOID,V,38,M,M,M,M,M,Authorization Code
+CVOID,V,39,Y1/Y3,0,0,0,Y1/Y3,Response Code
+CVOID,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+CVOID,V,42,M,M,M,M,M,Card Acceptor Identification Code
+CVOID,V,52,X,X,X,X,X,PIN Data
+CVOID,V,53,X,X,X,X,X,Security Related Control Information
+CVOID,V,54,O,O,O,O,O,Additional Amounts
+CVOID,V,55,M,X,X,X,M,EMV Chip Data
+CVOID,V,59,X,X,X,X,X,Card Authentication Data
+CVOID,V,60,X,X,X,X,X,POS Data
+CVOID,V,61,M,M,M,M,M,Additional POS Data
+CVOID,V,62,X,X,X,X,X,Invoice/ECR Reference Number
+CVOID,V,63,M,M,M,M,M,Additional Data
+CVOID,U,2,M,X,M,M,M,Primary Account Number (PAN)
+CVOID,U,3,0200NN,0200NN,0200NN,0200NN,0200NN,Processing Code
+CVOID,U,4,M,M,M,M,M,"Amount, Transaction"
+CVOID,U,11,M,M,M,M,M,Systems Trace Audit Number
+CVOID,U,12,M,M,M,M,M,"Time, Local Transaction"
+CVOID,U,13,M,M,M,M,M,"Date, Local Transaction"
+CVOID,U,14,X,X,X,M,X,"Date, Expiration"
+CVOID,U,18,O,O,O,O,O,Merchant Type Code
+CVOID,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+CVOID,U,24,M,M,M,M,M,Network International Identifier (NII)
+CVOID,U,25,50,50,50,50,50,Point-of-Service Condition Code
+CVOID,U,28,O,O,O,O,O,Transaction Fee Amount
+CVOID,U,35,M,M,M,X,M,Track 2 Data
+CVOID,U,36,X,X,X,X,X,Track 3 Data
+CVOID,U,37,M,M,M,M,M,Retrieval Reference Number
+CVOID,U,38,M,M,M,M,M,Authorization Code
+CVOID,U,39,O,O,O,O,O,Response Code
+CVOID,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+CVOID,U,42,M,M,M,M,M,Card Acceptor Identification Code
+CVOID,U,52,X,X,X,X,X,PIN Data
+CVOID,U,53,X,X,X,X,X,Security Related Control Information
+CVOID,U,54,O,O,O,O,O,Additional Amounts
+CVOID,U,55,M,X,X,X,M,EMV Chip Data
+CVOID,U,59,X,X,X,X,X,Card Authentication Data
+CVOID,U,60,X,X,X,X,X,POS Data
+CVOID,U,61,M,M,M,M,M,Additional POS Data
+CVOID,U,62,X,X,X,X,X,Invoice/ECR Reference Number
+CVOID,U,63,M,M,M,M,M,Additional Data
+BATCH,V,2,M,X,M,M,M,Primary Account Number (PAN)
+BATCH,V,3,0030NN,0030NN,0030NN,0030NN,0030NN,Processing Code
+BATCH,V,4,M,M,M,M,M,"Amount, Transaction"
+BATCH,V,11,M,M,M,M,M,Systems Trace Audit Number
+BATCH,V,12,O,O,O,O,O,"Time, Local Transaction"
+BATCH,V,13,O,O,O,O,O,"Date, Local Transaction"
+BATCH,V,14,X,X,X,M,X,"Date, Expiration"
+BATCH,V,18,O,O,O,O,O,Merchant Type Code
+BATCH,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+BATCH,V,24,M,M,M,M,M,Network International Identifier (NII)
+BATCH,V,25,50,50,50,50,50,Point-of-Service Condition Code
+BATCH,V,28,O,O,O,O,O,Transaction Fee Amount
+BATCH,V,37,M,M,M,M,M,Retrieval Reference Number
+BATCH,V,38,O,O,O,O,O,Authorization Code
+BATCH,V,39,M,M,M,M,M,Response Code
+BATCH,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+BATCH,V,42,M,M,M,M,M,Card Acceptor Identification Code
+BATCH,V,54,O,O,O,O,O,Additional Amounts
+BATCH,V,55,M,X,X,X,M,EMV Chip Data
+BATCH,V,59,O,O,O,O,O,Card Authentication Data
+BATCH,V,60,M,M,M,M,M,POS Data
+BATCH,V,61,M,M,M,M,M,Additional POS Data
+BATCH,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+BATCH,V,63,M,M,M,M,M,Additional Data
+BATCH,U,2,M,X,M,M,M,Primary Account Number (PAN)
+BATCH,U,3,0000NN,0000NN,0000NN,0000NN,0000NN,Processing Code
+BATCH,U,4,M,M,M,M,M,"Amount, Transaction"
+BATCH,U,11,M,M,M,M,M,Systems Trace Audit Number
+BATCH,U,12,O,O,O,O,O,"Time, Local Transaction"
+BATCH,U,13,O,O,O,O,O,"Date, Local Transaction"
+BATCH,U,14,X,X,X,M,X,"Date, Expiration"
+BATCH,U,18,O,O,O,O,O,Merchant Type Code
+BATCH,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+BATCH,U,24,M,M,M,M,M,Network International Identifier (NII)
+BATCH,U,25,50,50,50,50,50,Point-of-Service Condition Code
+BATCH,U,28,O,O,O,O,O,Transaction Fee Amount
+BATCH,U,37,M,M,M,M,M,Retrieval Reference Number
+BATCH,U,38,O,O,O,O,O,Authorization Code
+BATCH,U,39,M,M,M,M,M,Response Code
+BATCH,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+BATCH,U,42,M,M,M,M,M,Card Acceptor Identification Code
+BATCH,U,54,O,O,O,O,O,Additional Amounts
+BATCH,U,55,M,X,X,X,M,EMV Chip Data
+BATCH,U,59,O,O,O,O,O,Card Authentication Data
+BATCH,U,60,M,M,M,M,M,POS Data
+BATCH,U,61,M,M,M,M,M,Additional POS Data
+BATCH,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+BATCH,U,63,M,M,M,M,M,Additional Data
+BATCHR,V,2,M,X,M,M,M,Primary Account Number (PAN)
+BATCHR,V,3,2030NN,2030NN,2030NN,2030NN,2030NN,Processing Code
+BATCHR,V,4,M,M,M,M,M,"Amount, Transaction"
+BATCHR,V,11,M,M,M,M,M,Systems Trace Audit Number
+BATCHR,V,12,O,O,O,O,O,"Time, Local Transaction"
+BATCHR,V,13,O,O,O,O,O,"Date, Local Transaction"
+BATCHR,V,14,X,X,X,M,X,"Date, Expiration"
+BATCHR,V,18,O,O,O,O,O,Merchant Type Code
+BATCHR,V,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+BATCHR,V,24,M,M,M,M,M,Network International Identifier (NII)
+BATCHR,V,25,50,50,50,50,50,Point-of-Service Condition Code
+BATCHR,V,28,O,O,O,O,O,Transaction Fee Amount
+BATCHR,V,37,M,M,M,M,M,Retrieval Reference Number
+BATCHR,V,38,O,O,O,O,O,Authorization Code
+BATCHR,V,39,M,M,M,M,M,Response Code
+BATCHR,V,41,O,O,O,O,O,Card Acceptor Terminal Identification
+BATCHR,V,42,M,M,M,M,M,Card Acceptor Identification Code
+BATCHR,V,54,O,O,O,O,O,Additional Amounts
+BATCHR,V,55,M,X,X,X,M,EMV Chip Data
+BATCHR,V,59,O,O,O,O,O,Card Authentication Data
+BATCHR,V,60,M,M,M,M,M,POS Data
+BATCHR,V,61,M,M,M,M,M,Additional POS Data
+BATCHR,V,62,O,O,O,O,O,Invoice/ECR Reference Number
+BATCHR,V,63,M,M,M,M,M,Additional Data
+BATCHR,U,2,M,X,M,M,M,Primary Account Number (PAN)
+BATCHR,U,3,2000NN,2000NN,2000NN,2000NN,2000NN,Processing Code
+BATCHR,U,4,M,M,M,M,M,"Amount, Transaction"
+BATCHR,U,11,M,M,M,M,M,Systems Trace Audit Number
+BATCHR,U,12,O,O,O,O,O,"Time, Local Transaction"
+BATCHR,U,13,O,O,O,O,O,"Date, Local Transaction"
+BATCHR,U,14,X,X,X,M,X,"Date, Expiration"
+BATCHR,U,18,O,O,O,O,O,Merchant Type Code
+BATCHR,U,22,05N,90N,80N,01N,07N,Point-of-Service Entry Mode
+BATCHR,U,24,M,M,M,M,M,Network International Identifier (NII)
+BATCHR,U,25,50,50,50,50,50,Point-of-Service Condition Code
+BATCHR,U,28,O,O,O,O,O,Transaction Fee Amount
+BATCHR,U,37,M,M,M,M,M,Retrieval Reference Number
+BATCHR,U,38,O,O,O,O,O,Authorization Code
+BATCHR,U,39,M,M,M,M,M,Response Code
+BATCHR,U,41,O,O,O,O,O,Card Acceptor Terminal Identification
+BATCHR,U,42,M,M,M,M,M,Card Acceptor Identification Code
+BATCHR,U,54,O,O,O,O,O,Additional Amounts
+BATCHR,U,55,M,X,X,X,M,EMV Chip Data
+BATCHR,U,59,O,O,O,O,O,Card Authentication Data
+BATCHR,U,60,M,M,M,M,M,POS Data
+BATCHR,U,61,M,M,M,M,M,Additional POS Data
+BATCHR,U,62,O,O,O,O,O,Invoice/ECR Reference Number
+BATCHR,U,63,M,M,M,M,M,Additional Data

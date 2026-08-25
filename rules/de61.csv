@@ -1,0 +1,9 @@
+Sub ID,Rule,Description
+01,37,POS Terminal Input Capability Indicator
+02,30,Terminal Attendance
+03,30,Terminal Location
+04,30,Cardholder Presence
+05,30,Card Presence
+06,X,MOTO/EC Indicator
+07,X,Exception Processing
+08,X,Partial Approval Indicator

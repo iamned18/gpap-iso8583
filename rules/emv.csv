@@ -1,0 +1,197 @@
+TXN,Tag,Visa,MC,UP,JCB,Description
+COMPLETION,4F,X,X,X,C,Application ID (AID)
+COMPLETION,5F2A,M,M,M,M,Transaction Currency Code
+COMPLETION,5F34,C,C,C,C,Application PAN Sequence Number
+COMPLETION,82,M,M,M,M,Application Interchange Profile (AIP)
+COMPLETION,84,M,C,C,C,Dedicated File (DF) Name This tag contains the Application ID (AID) that was selected for transaction routing.
+COMPLETION,95,M,M,M,M,Terminal Verification Results (TVR)
+COMPLETION,96,X,C,X,X,Kernel Identifier - Terminal
+COMPLETION,9A,M,M,M,M,Transaction Date
+COMPLETION,9C,M,M,M,M,Transaction Type
+COMPLETION,9F02,M,M,M,M,"Amount, Authorized (Numeric)"
+COMPLETION,9F03,C,C,M,M,"Amount, Other (Numeric)"
+COMPLETION,9F09,X,C,C,C,Application Version Number
+COMPLETION,9F10,M,M,M,M,Issuer Application Data (IAD)
+COMPLETION,9F19,X,X,C,X,Token Requestor ID
+COMPLETION,9F1A,M,M,M,M,Terminal Country Code
+COMPLETION,9F1B,X,X,X,X,Terminal Floor Limit
+COMPLETION,9F1E,C,C,C,C,Interface Device (IFD) Serial Number
+COMPLETION,9F25,X,X,C,X,Last four digits of PAN
+COMPLETION,9F26,M,M,M,M,Application Cryptogram (AC)
+COMPLETION,9F27,X,M,M,M,Cryptogram Information Data (CID)
+COMPLETION,9F33,M,C,M,M,Terminal Capabilities
+COMPLETION,9F34,X,C,C,C,Cardholder Verification Method (CVM) Results
+COMPLETION,9F35,X,C,C,C,Terminal Type
+COMPLETION,9F36,M,M,M,M,Application Transaction Counter (ATC)
+COMPLETION,9F37,M,M,M,M,Unpredictable Number (UN)
+COMPLETION,9F41,X,C,C,C,Transaction Sequence Counter
+COMPLETION,9F53,X,C,X,X,Transaction Category Code (TCC)
+COMPLETION,9F5B,C,X,X,X,Issuer Script Results
+COMPLETION,9F60,X,C,X,X,Authenticated Application Data
+COMPLETION,9F63,X,X,C,X,Card Product Identification Information
+COMPLETION,9F6E,C,X,X,C,Form Factor Indicator Applicable for contactless transactions
+COMPLETION,9F6E,X,C,X,X,Third Party Data Applicable for contactless transactions
+COMPLETION,9F7C,C,X,C,C,Customer ENclusive Data Applicable for contactless transactions
+COMPLETION,DF31,X,X,C,X,Issuer Script Results
+TCUPLOAD,4F,X,X,X,C,Application ID (AID)
+TCUPLOAD,5F2A,M,M,M,M,Transaction Currency Code
+TCUPLOAD,5F34,C,C,C,C,Application PAN Sequence Number
+TCUPLOAD,82,M,M,M,M,Application Interchange Profile (AIP)
+TCUPLOAD,84,M,C,C,C,Dedicated File (DF) Name This tag contains the Application ID (AID) that was selected for transaction routing.
+TCUPLOAD,95,M,M,M,M,Terminal Verification Results (TVR)
+TCUPLOAD,96,X,C,X,X,Kernel Identifier - Terminal
+TCUPLOAD,9A,M,M,M,M,Transaction Date
+TCUPLOAD,9C,M,M,M,M,Transaction Type
+TCUPLOAD,9F02,M,M,M,M,"Amount, Authorized (Numeric)"
+TCUPLOAD,9F03,C,C,M,M,"Amount, Other (Numeric)"
+TCUPLOAD,9F09,X,C,C,C,Application Version Number
+TCUPLOAD,9F10,M,M,M,M,Issuer Application Data (IAD)
+TCUPLOAD,9F19,X,X,C,X,Token Requestor ID
+TCUPLOAD,9F1A,M,M,M,M,Terminal Country Code
+TCUPLOAD,9F1B,X,X,X,X,Terminal Floor Limit
+TCUPLOAD,9F1E,C,C,C,C,Interface Device (IFD) Serial Number
+TCUPLOAD,9F25,X,X,C,X,Last four digits of PAN
+TCUPLOAD,9F26,M,M,M,M,Application Cryptogram (AC)
+TCUPLOAD,9F27,X,M,M,M,Cryptogram Information Data (CID)
+TCUPLOAD,9F33,M,C,M,M,Terminal Capabilities
+TCUPLOAD,9F34,X,C,C,C,Cardholder Verification Method (CVM) Results
+TCUPLOAD,9F35,X,C,C,C,Terminal Type
+TCUPLOAD,9F36,M,M,M,M,Application Transaction Counter (ATC)
+TCUPLOAD,9F37,M,M,M,M,Unpredictable Number (UN)
+TCUPLOAD,9F41,X,C,C,C,Transaction Sequence Counter
+TCUPLOAD,9F53,X,C,X,X,Transaction Category Code (TCC)
+TCUPLOAD,9F5B,C,X,X,X,Issuer Script Results
+TCUPLOAD,9F60,X,C,X,X,Authenticated Application Data
+TCUPLOAD,9F63,X,X,C,X,Card Product Identification Information
+TCUPLOAD,9F6E,C,X,X,C,Form Factor Indicator Applicable for contactless transactions
+TCUPLOAD,9F6E,X,C,X,X,Third Party Data Applicable for contactless transactions
+TCUPLOAD,9F7C,C,X,C,C,Customer ENclusive Data Applicable for contactless transactions
+TCUPLOAD,DF31,X,X,C,X,Issuer Script Results
+SALE,4F,X,X,X,C,Application ID (AID)
+SALE,5F2A,M,M,M,M,Transaction Currency Code
+SALE,5F34,C,C,C,C,Application PAN Sequence Number
+SALE,82,M,M,M,M,Application Interchange Profile (AIP)
+SALE,84,M,C,C,C,Dedicated File (DF) Name ThistagcontainstheApplication ID (AID) that was selected for transaction routing.
+SALE,95,M,M,M,M,Terminal Verification Results (TVR)
+SALE,96,X,C,X,X,Kernel Identifier - Terminal
+SALE,9A,M,M,M,M,Transaction Date
+SALE,9C,M,M,M,M,Transaction Type
+SALE,9F02,M,M,M,M,"Amount, Authorized (Numeric)"
+SALE,9F03,C,C,M,M,"Amount, Other (Numeric)"
+SALE,9F09,X,C,C,C,Application Version Number
+SALE,9F10,M,M,M,M,Issuer Application Data (IAD)
+SALE,9F19,X,X,C,X,Token Requestor ID
+SALE,9F1A,M,M,M,M,Terminal Country Code
+SALE,9F1B,X,X,X,X,Terminal Floor Limit
+SALE,9F1E,C,C,C,C,Interface Device (IFD) Serial Number
+SALE,9F25,X,X,C,X,Last four digits of PAN
+SALE,9F26,M,M,M,M,Application Cryptogram (AC)
+SALE,9F27,X,M,M,M,Cryptogram Information Data (CID)
+SALE,9F33,M,C,M,C,Terminal Capabilities
+SALE,9F34,X,C,C,C,Cardholder Verification Method (CVM) Results
+SALE,9F35,X,C,C,C,Terminal Type
+SALE,9F36,M,M,M,M,ApplicationTransaction Counter (ATC)
+SALE,9F37,M,M,M,M,Unpredictable Number (UN)
+SALE,9F41,X,C,C,C,Transaction Sequence Counter
+SALE,9F53,X,C,X,X,Transaction Category Code (TCC)
+SALE,9F60,X,C,X,X,Authenticated Application Data
+SALE,9F63,X,X,C,X,Card Product Identification Information
+SALE,9F6E,C,X,X,C,Form Factor Indicator Applicable for contactless transactions
+SALE,9F6E,X,C,X,X,Third Party Data Applicable for contactless transactions
+SALE,9F7C,C,X,C,C,Customer ENclusive Data Applicable for contactless transactions
+PREAUTH,4F,X,X,X,C,Application ID (AID)
+PREAUTH,5F2A,M,M,M,M,Transaction Currency Code
+PREAUTH,5F34,C,C,C,C,Application PAN Sequence Number
+PREAUTH,82,M,M,M,M,Application Interchange Profile (AIP)
+PREAUTH,84,M,C,C,C,Dedicated File (DF) Name ThistagcontainstheApplication ID (AID) that was selected for transaction routing.
+PREAUTH,95,M,M,M,M,Terminal Verification Results (TVR)
+PREAUTH,96,X,C,X,X,Kernel Identifier - Terminal
+PREAUTH,9A,M,M,M,M,Transaction Date
+PREAUTH,9C,M,M,M,M,Transaction Type
+PREAUTH,9F02,M,M,M,M,"Amount, Authorized (Numeric)"
+PREAUTH,9F03,C,C,M,M,"Amount, Other (Numeric)"
+PREAUTH,9F09,X,C,C,C,Application Version Number
+PREAUTH,9F10,M,M,M,M,Issuer Application Data (IAD)
+PREAUTH,9F19,X,X,C,X,Token Requestor ID
+PREAUTH,9F1A,M,M,M,M,Terminal Country Code
+PREAUTH,9F1B,X,X,X,X,Terminal Floor Limit
+PREAUTH,9F1E,C,C,C,C,Interface Device (IFD) Serial Number
+PREAUTH,9F25,X,X,C,X,Last four digits of PAN
+PREAUTH,9F26,M,M,M,M,Application Cryptogram (AC)
+PREAUTH,9F27,X,M,M,M,Cryptogram Information Data (CID)
+PREAUTH,9F33,M,C,M,C,Terminal Capabilities
+PREAUTH,9F34,X,C,C,C,Cardholder Verification Method (CVM) Results
+PREAUTH,9F35,X,C,C,C,Terminal Type
+PREAUTH,9F36,M,M,M,M,ApplicationTransaction Counter (ATC)
+PREAUTH,9F37,M,M,M,M,Unpredictable Number (UN)
+PREAUTH,9F41,X,C,C,C,Transaction Sequence Counter
+PREAUTH,9F53,X,C,X,X,Transaction Category Code (TCC)
+PREAUTH,9F60,X,C,X,X,Authenticated Application Data
+PREAUTH,9F63,X,X,C,X,Card Product Identification Information
+PREAUTH,9F6E,C,X,X,C,Form Factor Indicator Applicable for contactless transactions
+PREAUTH,9F6E,X,C,X,X,Third Party Data Applicable for contactless transactions
+PREAUTH,9F7C,C,X,C,C,Customer ENclusive Data Applicable for contactless transactions
+SALEADJ,4F,X,X,X,C,Application ID (AID)
+SALEADJ,5F2A,M,M,M,M,Transaction Currency Code
+SALEADJ,5F34,C,C,C,C,Application PAN Sequence Number
+SALEADJ,82,M,M,M,M,Application Interchange Profile (AIP)
+SALEADJ,84,M,C,C,C,Dedicated File (DF) Name ThistagcontainstheApplication ID (AID) that was selected for transaction routing.
+SALEADJ,95,M,M,M,M,Terminal Verification Results (TVR)
+SALEADJ,96,X,C,X,X,Kernel Identifier - Terminal
+SALEADJ,9A,M,M,M,M,Transaction Date
+SALEADJ,9C,M,M,M,M,Transaction Type
+SALEADJ,9F02,M,M,M,M,"Amount, Authorized (Numeric)"
+SALEADJ,9F03,C,C,M,M,"Amount, Other (Numeric)"
+SALEADJ,9F09,X,C,C,C,Application Version Number
+SALEADJ,9F10,M,M,M,M,Issuer Application Data (IAD)
+SALEADJ,9F19,X,X,C,X,Token Requestor ID
+SALEADJ,9F1A,M,M,M,M,Terminal Country Code
+SALEADJ,9F1B,X,X,X,X,Terminal Floor Limit
+SALEADJ,9F1E,C,C,C,C,Interface Device (IFD) Serial Number
+SALEADJ,9F25,X,X,C,X,Last four digits of PAN
+SALEADJ,9F26,M,M,M,M,Application Cryptogram (AC)
+SALEADJ,9F27,X,M,M,M,Cryptogram Information Data (CID)
+SALEADJ,9F33,M,C,M,C,Terminal Capabilities
+SALEADJ,9F34,X,C,C,C,Cardholder Verification Method (CVM) Results
+SALEADJ,9F35,X,C,C,C,Terminal Type
+SALEADJ,9F36,M,M,M,M,ApplicationTransaction Counter (ATC)
+SALEADJ,9F37,M,M,M,M,Unpredictable Number (UN)
+SALEADJ,9F41,X,C,C,C,Transaction Sequence Counter
+SALEADJ,9F53,X,C,X,X,Transaction Category Code (TCC)
+SALEADJ,9F60,X,C,X,X,Authenticated Application Data
+SALEADJ,9F63,X,X,C,X,Card Product Identification Information
+SALEADJ,9F6E,C,X,X,C,Form Factor Indicator Applicable for contactless transactions
+SALEADJ,9F6E,X,C,X,X,Third Party Data Applicable for contactless transactions
+SALEADJ,9F7C,C,X,C,C,Customer ENclusive Data Applicable for contactless transactions
+SALETIP,4F,X,X,X,C,Application ID (AID)
+SALETIP,5F2A,M,M,M,M,Transaction Currency Code
+SALETIP,5F34,C,C,C,C,Application PAN Sequence Number
+SALETIP,82,M,M,M,M,Application Interchange Profile (AIP)
+SALETIP,84,M,C,C,C,Dedicated File (DF) Name ThistagcontainstheApplication ID (AID) that was selected for transaction routing.
+SALETIP,95,M,M,M,M,Terminal Verification Results (TVR)
+SALETIP,96,X,C,X,X,Kernel Identifier - Terminal
+SALETIP,9A,M,M,M,M,Transaction Date
+SALETIP,9C,M,M,M,M,Transaction Type
+SALETIP,9F02,M,M,M,M,"Amount, Authorized (Numeric)"
+SALETIP,9F03,C,C,M,M,"Amount, Other (Numeric)"
+SALETIP,9F09,X,C,C,C,Application Version Number
+SALETIP,9F10,M,M,M,M,Issuer Application Data (IAD)
+SALETIP,9F19,X,X,C,X,Token Requestor ID
+SALETIP,9F1A,M,M,M,M,Terminal Country Code
+SALETIP,9F1B,X,X,X,X,Terminal Floor Limit
+SALETIP,9F1E,C,C,C,C,Interface Device (IFD) Serial Number
+SALETIP,9F25,X,X,C,X,Last four digits of PAN
+SALETIP,9F26,M,M,M,M,Application Cryptogram (AC)
+SALETIP,9F27,X,M,M,M,Cryptogram Information Data (CID)
+SALETIP,9F33,M,C,M,C,Terminal Capabilities
+SALETIP,9F34,X,C,C,C,Cardholder Verification Method (CVM) Results
+SALETIP,9F35,X,C,C,C,Terminal Type
+SALETIP,9F36,M,M,M,M,ApplicationTransaction Counter (ATC)
+SALETIP,9F37,M,M,M,M,Unpredictable Number (UN)
+SALETIP,9F41,X,C,C,C,Transaction Sequence Counter
+SALETIP,9F53,X,C,X,X,Transaction Category Code (TCC)
+SALETIP,9F60,X,C,X,X,Authenticated Application Data
+SALETIP,9F63,X,X,C,X,Card Product Identification Information
+SALETIP,9F6E,C,X,X,C,Form Factor Indicator Applicable for contactless transactions
+SALETIP,9F6E,X,C,X,X,Third Party Data Applicable for contactless transactions
+SALETIP,9F7C,C,X,C,C,Customer ENclusive Data Applicable for contactless transactions
