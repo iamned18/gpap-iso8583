@@ -1,256 +1,654 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO 8583 Checker — Web Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151A;
+    --ink-2:#1A1F27;
+    --ink-3:#20262F;
+    --paper:#E8E2D3;
+    --paper-dim:#A6A196;
+    --brass:#C9A227;
+    --brass-dim:#8E7420;
+    --wire:#333D48;
+    --pass:#5FA88F;
+    --fail:#C1554A;
+    --warn:#D6A24A;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:15px;
+    line-height:1.5;
+    min-height:100vh;
+  }
+  ::selection{background:var(--brass); color:var(--ink);}
 
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="./style.css">
+  a{color:var(--brass);}
 
-	<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  .wrap{max-width:1240px; margin:0 auto; padding:0 28px 80px;}
 
-	<!-- Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,600&display=swap" rel="stylesheet">
+  /* ---------- Header ---------- */
+  header.top{
+    padding:36px 28px 22px;
+    border-bottom:1px solid var(--wire);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.18em;
+    color:var(--brass);
+    text-transform:uppercase;
+    margin:0 0 10px;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(28px, 4.4vw, 42px);
+    margin:0 0 8px;
+    letter-spacing:-0.01em;
+  }
+  .sub{
+    color:var(--paper-dim);
+    font-size:14.5px;
+    max-width:620px;
+    margin:0 0 22px;
+  }
+
+  /* Bitmap strip: literal reference to the ISO8583 primary bitmap.
+     Ticks 1-64 light up brass once a trace is parsed and that DE is present. */
+  .bitmap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:3px;
+    max-width:100%;
+  }
+  .bitmap .tick{
+    width:14px; height:20px;
+    background:var(--ink-3);
+    border:1px solid var(--wire);
+    border-radius:2px;
+    position:relative;
+  }
+  .bitmap .tick.on{
+    background:var(--brass);
+    border-color:var(--brass);
+    box-shadow:0 0 8px rgba(201,162,39,.55);
+  }
+  .bitmap-caption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--paper-dim);
+    margin-top:8px;
+    letter-spacing:.04em;
+  }
+
+  /* ---------- Layout ---------- */
+  main.grid{
+    display:grid;
+    grid-template-columns: minmax(340px, 420px) 1fr;
+    gap:24px;
+    margin-top:26px;
+    align-items:start;
+  }
+  @media (max-width: 920px){
+    main.grid{grid-template-columns: 1fr;}
+  }
+
+  .panel{
+    background:var(--ink-2);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:22px;
+  }
+  .panel + .panel{margin-top:20px;}
+  .panel h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:15px;
+    letter-spacing:.02em;
+    margin:0 0 16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .panel h2 .num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--brass);
+    font-size:12px;
+  }
+
+  label{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--paper-dim);
+    margin:16px 0 6px;
+  }
+  label:first-of-type{margin-top:0;}
+
+  select, textarea, input[type=text]{
+    width:100%;
+    background:var(--ink);
+    color:var(--paper);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:9px 10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    outline:none;
+  }
+  select:focus, textarea:focus, input:focus{
+    border-color:var(--brass);
+  }
+  textarea{
+    resize:vertical;
+    min-height:170px;
+    line-height:1.45;
+  }
+  .filerow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--ink);
+    border:1px dashed var(--wire);
+    border-radius:var(--radius);
+    padding:9px 10px;
+  }
+  .filerow input[type=file]{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--paper-dim);
+    width:100%;
+  }
+  .filerow .req{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--brass);
+    border:1px solid var(--brass-dim);
+    padding:1px 6px;
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  .filerow .opt{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--paper-dim);
+    border:1px solid var(--wire);
+    padding:1px 6px;
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  .filerow.ok{border-style:solid; border-color:var(--pass);}
+
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .row3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;}
+
+  button.run{
+    margin-top:20px;
+    width:100%;
+    background:var(--brass);
+    color:var(--ink);
+    border:none;
+    border-radius:var(--radius);
+    padding:13px 16px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    letter-spacing:.01em;
+    cursor:pointer;
+    transition:background .15s ease, transform .05s ease;
+  }
+  button.run:hover{background:#DDB534;}
+  button.run:active{transform:translateY(1px);}
+  button.run:disabled{
+    background:var(--wire);
+    color:var(--paper-dim);
+    cursor:not-allowed;
+  }
+
+  .status-line{
+    margin-top:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--paper-dim);
+    min-height:16px;
+  }
+  .status-line.err{color:var(--fail);}
+
+  /* ---------- Report panel ---------- */
+  .report-empty{
+    color:var(--paper-dim);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:60px 10px;
+    text-align:center;
+    border:1px dashed var(--wire);
+    border-radius:var(--radius);
+  }
+
+  .detect-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .dcell{
+    background:var(--ink);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:10px 12px;
+  }
+  .dcell .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--paper-dim);
+    margin-bottom:4px;
+  }
+  .dcell .v{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:15px;
+    font-weight:600;
+  }
+
+  .tally{
+    display:flex;
+    gap:14px;
+    margin-bottom:16px;
+  }
+  .tally .pill{
+    flex:1;
+    border-radius:var(--radius);
+    padding:14px 16px;
+    font-family:'Space Grotesk', sans-serif;
+  }
+  .tally .pill .n{font-size:26px; font-weight:700; line-height:1;}
+  .tally .pill .l{font-size:11px; letter-spacing:.08em; text-transform:uppercase; margin-top:4px; opacity:.85;}
+  .tally .pass{background:rgba(95,168,143,.14); border:1px solid var(--pass); color:var(--pass);}
+  .tally .fail{background:rgba(193,85,74,.14); border:1px solid var(--fail); color:var(--fail);}
+
+  .actions{display:flex; gap:10px; margin-bottom:14px;}
+  .actions button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    background:transparent;
+    color:var(--paper);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:8px 14px;
+    cursor:pointer;
+  }
+  .actions button:hover{border-color:var(--brass); color:var(--brass);}
+
+  pre.report{
+    background:var(--ink);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:16px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    line-height:1.55;
+    overflow-x:auto;
+    max-height:640px;
+    overflow-y:auto;
+    white-space:pre;
+    margin:0;
+  }
+
+  .warn-box{
+    border:1px solid var(--warn);
+    background:rgba(214,162,74,.1);
+    color:var(--warn);
+    border-radius:var(--radius);
+    padding:10px 12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    margin-bottom:16px;
+    white-space:pre-wrap;
+  }
+
+  footer{
+    max-width:1240px;
+    margin:40px auto 0;
+    padding:20px 28px 0;
+    border-top:1px solid var(--wire);
+    color:var(--paper-dim);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+  }
+
+  .hint{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--paper-dim);
+    margin-top:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .bitmap .tick{transition:none;}
+  }
+</style>
 </head>
-<body class="bg-secondary">
-			<!--  -->
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				  <a class="navbar-brand" href="#land">Snoe Pups</a>
-				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				    <span class="navbar-toggler-icon"></span>
-				  </button>
-				  <div class="collapse navbar-collapse" id="navbarNav">
-				    <ul class="navbar-nav">
-				      <li class="nav-item active">
-				        <a class="nav-link" href="#About">About <span class="sr-only">(current)</span></a>
-				      </li>
-				      <li class="nav-item dropdown">
-				        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-				          My Work
-				        </a>
-				        <div class="dropdown-menu">
-				          <a class="dropdown-item" href="#Work">E-Commerce</a>
-				          <a class="dropdown-item" href="#Work">Blog</a>
-				          <a class="dropdown-item" href="#Work">Online Booking System</a>
-				        </div>
-				      </li>
-				      <li class="nav-item dropdown">
-				        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-				          Tools
-				        </a>
-				        <div class="dropdown-menu">
-				          <a class="dropdown-item" href="#Core">Core Tools</a>
-				          <a class="dropdown-item" href="#Other">Other Tools</a>
-				        </div>
-				      </li>
-				      <li class="nav-item">
-				        <a class="nav-link" href="#Contact">Contact</a>
-				      </li>
-				    </ul>
-				  </div>
-				</nav>
+<body>
 
-			<!-- Landing Page -->
-				<div class="container" id="land">
-					<div class="row text-dark text-center">
-					<div class="jumbotron container-fluid bg-dark mt-5 mb-3">		
-					  <h1 class="display-1 mt-3 text-light"><strong>Web design at its finest!</strong></h1>
-					  <img class="img-fluid" src="https://images.unsplash.com/photo-1606818855637-f637cdb124b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80">
+<header class="top">
+  <div class="wrap" style="padding:0;">
+    <p class="eyebrow">ISO 8583 · Web Edition</p>
+    <h1>Message Checker</h1>
+    <p class="sub">Paste a switch-log trace, point it at your Rule Set CSVs, and validate Data Elements, EMV tags, DE61 and DE63 subfields — entirely in this browser tab. Nothing is uploaded anywhere.</p>
+    <div class="bitmap" id="bitmap"></div>
+    <p class="bitmap-caption">DE 1–64 · lights up once a trace is parsed and that field is present</p>
+  </div>
+</header>
 
-					  <hr class="my-4">
-					  <p class="text-white mx-auto col-6"><em>“Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery</em>
-					  </p>
-					</div>
+<div class="wrap">
+<main class="grid">
 
-				</div>
+  <!-- ===================== LEFT: INPUT ===================== -->
+  <div>
+    <div class="panel">
+      <h2><span class="num">01</span> Rule Set CSVs</h2>
 
-				</div>
+      <label>Standard Rule Set</label>
+      <div class="filerow" id="row-config"><span class="req">required</span><input type="file" id="file-config" accept=".csv"></div>
 
-			<!-- About -->
-			<div class="container">
-				<!-- About row -->
-				<div class="row text-light ">
-					<h1 class="container-fluid dispaly-4 text-center text-dark">About</h1>
-					<div class="jumbotron mt-3" id="About">
+      <label>EMV Tag Rule Set</label>
+      <div class="filerow" id="row-emv"><span class="req">required</span><input type="file" id="file-emv" accept=".csv"></div>
 
-						<div class="col-md-4 text-center mt-3">
-							<img src="./images/ball.jpg" class="img-fluid rounded-circle border-white">		
-						</div>
-					  <h1 class="display-3 mt-3">Hello, <strong>Hooman!</strong></h1>
-					  <p class="lead">I'm Snoe Ball, a passionate freelancer bringing you programming and design from the future. I am experienced in developing web and desktop applications including full front back end design. This includes brand identity, graphics and illustrations</p>
-					  <hr class="my-4">
-					  <p>Get your space suit ready and tell me your ideas to develop your dream application.</p>
-					  <a class="btn btn-primary btn-lg" href="#Contact" role="button">Contact me</a>
-					</div>
+      <label>DE61 Rule Set</label>
+      <div class="filerow" id="row-de61"><span class="opt">optional</span><input type="file" id="file-de61" accept=".csv"></div>
 
-				</div>
-				<!-- My Works -->
-				<h2 class="mt-5 text-center" id="Work">My Works</h2>
-			  <div class="d-none d-md-block">
-				<div id="carouselExampleCaptions" class="carousel slide mt-5" data-ride="carousel">
-				  <ol class="carousel-indicators">
-				    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-				    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-				    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-				  </ol>
-				  <div class="carousel-inner">
-				    <div class="carousel-item active">
-				      <img src="./images/ecommerce.jpg" class="d-block w-100" alt="ecommerce">
-				      <div class="carousel-caption d-none d-md-block">
-				        <h4 class="bg-dark">E-Commerce</h4>
-				        <p class="text-white bg-dark">E-Commerce, also known as e-Business, or electronic business, is simply the sale and purchase of services and goods over an electronic medium, like the Internet.</p>
-				      </div>
-				    </div>
-				    <div class="carousel-item">
-				      <img src="./images/blog.jpg" class="d-block w-100" alt="blog">
-				      <div class="carousel-caption d-none d-md-block">
-				        <h4 class="bg-dark">Blog</h4>
-				        <p class="text-white bg-dark">A blog (a shortened version of “weblog”) is an online journal or informational website displaying information in reverse chronological order, with the latest posts appearing first, at the top.</p>
-				      </div>
-				    </div>
-				    <div class="carousel-item">
-				      <img src="./images/book.jpg" class="d-block w-100" alt="online booking">
-				      <div class="carousel-caption d-none d-md-block">
-				        <h4 class="bg-dark">Online Booking System</h4>
-				        <p class="text-white bg-dark">What is an online booking system? Put simply, an online booking system is a software solution used for reservation management.</p>
-				      </div>
-				    </div>
-				  </div>
-				  <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
-				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </button>
-				  <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
-				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </button>
-				</div>
-			  </div>
+      <label>DE63 Rule Set</label>
+      <div class="filerow" id="row-de63"><span class="opt">optional</span><input type="file" id="file-de63" accept=".csv"></div>
 
-				<!-- Tools -->
-				<div class="jumbotron my-3 d-flex flex-column justify-content-center align-items-center text-white mt-5 min-vh-100" id="tools">
+      <p class="hint">Same column layout as the desktop tool's "Rule Set.csv" / "Rule Set - EMV Tag.csv" / "Rule Set - DE61.csv" / "Rule Set - DE63.csv".</p>
+    </div>
 
-					<!-- Core Tools Section Start -->
-					<h2 class="text-center text-light" id="Core">Core Tools</h2>
+    <div class="panel">
+      <h2><span class="num">02</span> Trace &amp; Target Leg</h2>
+      <label>Message Leg to Validate</label>
+      <select id="target-leg">
+        <option value="ACQ REQ" selected>Acq Req</option>
+        <option value="ISS REQ">Iss Req</option>
+        <option value="ISS RESP">Iss Resp</option>
+        <option value="ACQ RESP">Acq Resp</option>
+      </select>
 
-					<div class="d-flex flex-column">
-					    <div class="d-flex justify-content-center">
-					        <img width="125" src="images/logo-html5.png"/>
-					    </div>
-					    <div class="d-flex justify-content-center">
-					        <img width="125" src="images/logo-css3.png"/>
-					        <img width="125" src="images/logo-javascript.png"/>
-					    </div>
-					</div>
-					<!-- Core Tools Section End -->
-					
-					<!-- Other Tools Section Start -->
-					<h3 class="text-center mt-3 text-light" id="Other">Other Tools</h3>
+      <label>Paste the ISO 8583 trace</label>
+      <textarea id="trace-text" spellcheck="false" placeholder="Acq Req: ...
+MESSAGE_ID_ISO   000 [0200]
+PRIMARY_ACCT_NBR 002 [4111111111111111]
+...
+Cont..[continuation lines append to the field above]"></textarea>
+    </div>
 
-					<div class="d-flex flex-md-column">
-					    <div class="d-md-flex justify-content-center">
-					        <img width="100" src="images/logo-mongodb.png"/>
-					        <img width="100" src="images/logo-nodejs.png"/>
-					        <img width="100" src="images/logo-expressjs.png"/>
-					        <img width="100" src="images/logo-react.png"/>
-					        <img width="100" src="images/logo-heroku.png"/>
-					    </div>
-					    <div class="d-md-flex justify-content-center mt-3">
-					        <img width="100" src="images/logo-git.png"/>
-					        <img width="100" src="images/logo-sublime-text-3.png"/>
-					        <img width="100" src="images/logo-postman.png"/>
-					        <img width="100" src="images/logo-gitlab-ci-cd.png"/>
-					    </div>
-					</div>
-					<!-- Other Tools Section End -->
-				</div>
-				<!-- contact -->
-				<h1 class="text-center mt-5" id="Contact">Contact</h1>
-				<h4 class="text-center">Social Media</h4>
-				<section>
-					<div class="container-fluid">
-					    <div class="text-center text-light row mx-auto">
-	        					<div class="pt-3 pb-3 col"> <a href="https://www.facebook.com/iamned08" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi bi-facebook" viewBox="0 0 16 16">
-								<path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-								</svg></a> </div>
-	        					<div class="pt-3 pb-3 col"><a href="https://www.linkedin.com/in/alden-ulep-7b988b134/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi bi-linkedin" viewBox="0 0 16 16">
-								<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-								</svg> </a> </div>
-	        					<div class="pt-3 pb-3 col"><a href="https://gitlab.com/alden.ulep" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi bi-git" viewBox="0 0 16 16">
-								<path d="M15.698 7.287 8.712.302a1.03 1.03 0 0 0-1.457 0l-1.45 1.45 1.84 1.84a1.223 1.223 0 0 1 1.55 1.56l1.773 1.774a1.224 1.224 0 0 1 1.267 2.025 1.226 1.226 0 0 1-2.002-1.334L8.58 5.963v4.353a1.226 1.226 0 1 1-1.008-.036V5.887a1.226 1.226 0 0 1-.666-1.608L5.093 2.465l-4.79 4.79a1.03 1.03 0 0 0 0 1.457l6.986 6.986a1.03 1.03 0 0 0 1.457 0l6.953-6.953a1.031 1.031 0 0 0 0-1.457"/>
-								</svg></a> </div>
-	        					<div class="pt-3 pb-3 col"><a href="https://github.com/iamned18" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi bi-github" viewBox="0 0 16 16">
-								<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-								</svg></a></div>
-						</div>
-					</div>
+    <div class="panel">
+      <h2><span class="num">03</span> Overrides <span style="font-weight:400;color:var(--paper-dim);font-size:11px;">(optional — leave Auto to detect)</span></h2>
+      <div class="row3">
+        <div>
+          <label>Card</label>
+          <select id="ov-card"><option value="">Auto</option></select>
+        </div>
+        <div>
+          <label>Entry Mode</label>
+          <select id="ov-entry"><option value="">Auto</option></select>
+        </div>
+        <div>
+          <label>Txn Type</label>
+          <select id="ov-txn"><option value="">Auto</option></select>
+        </div>
+      </div>
 
-				</section>
+      <button class="run" id="btn-run" disabled>Loading Python runtime…</button>
+      <div class="status-line" id="status"></div>
+    </div>
+  </div>
 
-				<div class="row">
+  <!-- ===================== RIGHT: REPORT ===================== -->
+  <div class="panel" id="report-panel">
+    <h2><span class="num">→</span> Report</h2>
+    <div class="report-empty" id="report-empty">
+      Upload the two required Rule Set CSVs, paste a trace, then run the check.<br>The full report renders here.
+    </div>
+    <div id="report-body" style="display:none;">
+      <div class="warn-box" id="csv-warn" style="display:none;"></div>
+      <div class="detect-grid" id="detect-grid"></div>
+      <div class="tally">
+        <div class="pill pass"><div class="n" id="n-pass">0</div><div class="l">Pass</div></div>
+        <div class="pill fail"><div class="n" id="n-fail">0</div><div class="l">Fail</div></div>
+      </div>
+      <div class="actions">
+        <button id="btn-copy">Copy report</button>
+        <button id="btn-download">Download .txt</button>
+      </div>
+      <pre class="report" id="report-text"></pre>
+    </div>
+  </div>
 
-					<!--Google map-->
+</main>
+</div>
 
-					<div id="googlemap" class="z-depth-1-half map-container col-md-6 mt-5 mb-5">
-					   <h4 class="text-center my-4">Location</h4>
-					   <iframe src="https://maps.google.com/maps?q=zuitt+qc&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-					      allowfullscreen></iframe>
-					</div>
+<footer>
+  <div class="wrap" style="padding:0;">
+    Runs on Pyodide (CPython compiled to WebAssembly) — the same iso8583_rules.py / iso8583_parse.py / iso8583_validate.py modules as the desktop tool, unmodified, executing locally in your browser.
+  </div>
+</footer>
 
-					<!-- Contact -->
-				    <div class="col-md-6 mt-5">
-				        <h4 class="text-center my-4">Contact me</h4>
-				        <h6 class="text-justify mb-3">I'm interested in freelance opportunities — especially ambitious or large projects. However, if you have other request or question, don't hesitate to use the form</h6>
-				        <form class="mt-3">
-				            <div class="form-group">
-				                <label>Full Name</label>
-				                <input type="text" class="form-control">
-				            </div>
-				            <div class="form-group">
-				                <label>Email Address</label>
-				                <input type="email" class="form-control">
-				            </div>
-				            <div class="form-group">
-				                <label>Message</label>
-				                <textarea class="form-control"></textarea>
-				            </div>
-				            <button type="submit" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Send</button>
-				        </form>
-				    </div>
-				</div>
-				<!-- Modal Start -->
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				    <div class="modal-dialog modal-dialog-centered">
-				        <div class="modal-content">
-				            <div class="modal-header">
-				                <h5 class="modal-title" id="exampleModalLabel">Thank you for Messaging Us!</h5>
-				                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				                  <span aria-hidden="true">&times;</span>
-				              </button>
-				          </div>
-				          <div class="modal-body">
-				            Message Successfully Sent
-				        </div>
-				        <div class="modal-footer">
-				            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        </div>
-				    </div>
-				</div>
-			</div>
-			<!-- footer -->
-			<footer class="footer bg-dark mt-5 p-2">
-				<div class="container mt-2 text-white">
-					<p class="text-center">Snoe Pups | © All Rights Reserved 2022</p>
-				</div>
-			</footer>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<script>
+const CARD_OPTIONS = [["VISA","Visa"],["MASTERCARD","Mastercard"],["UNIONPAY","UnionPay"],["JCB","JCB"]];
+const ENTRY_OPTIONS = [["CHIP","Chip"],["TAP","Tap"],["SWIPE","Swipe"],["FALLBACK","Fallback"],["MANUAL","Manual"]];
 
-			<!-- Bootstrap Script -->
-				<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+const bitmapEl = document.getElementById('bitmap');
+for (let i=1;i<=64;i++){
+  const d = document.createElement('div');
+  d.className = 'tick';
+  d.dataset.de = i;
+  d.title = 'DE ' + i;
+  bitmapEl.appendChild(d);
+}
+
+function fillSelect(id, opts){
+  const sel = document.getElementById(id);
+  opts.forEach(([val,label])=>{
+    const o = document.createElement('option');
+    o.value = val; o.textContent = label;
+    sel.appendChild(o);
+  });
+}
+fillSelect('ov-card', CARD_OPTIONS);
+fillSelect('ov-entry', ENTRY_OPTIONS);
+
+const statusEl = document.getElementById('status');
+const runBtn = document.getElementById('btn-run');
+
+let pyodideReady = null;
+let fileText = {config:null, emv:null, de61:null, de63:null};
+
+function setStatus(msg, isErr){
+  statusEl.textContent = msg || '';
+  statusEl.className = 'status-line' + (isErr ? ' err' : '');
+}
+
+function updateRunEnabled(){
+  const ready = !!pyodideReady && !!fileText.config && !!fileText.emv && document.getElementById('trace-text').value.trim().length > 0;
+  runBtn.disabled = !ready;
+}
+
+document.getElementById('trace-text').addEventListener('input', updateRunEnabled);
+
+function wireFileInput(inputId, rowId, key){
+  document.getElementById(inputId).addEventListener('change', async (e)=>{
+    const f = e.target.files[0];
+    const row = document.getElementById(rowId);
+    if (!f){ fileText[key] = null; row.classList.remove('ok'); updateRunEnabled(); return; }
+    fileText[key] = await f.text();
+    row.classList.add('ok');
+    updateRunEnabled();
+  });
+}
+wireFileInput('file-config','row-config','config');
+wireFileInput('file-emv','row-emv','emv');
+wireFileInput('file-de61','row-de61','de61');
+wireFileInput('file-de63','row-de63','de63');
+
+async function boot(){
+  setStatus('Loading Python runtime (first load only, a few seconds)…');
+  const pyodide = await loadPyodide();
+
+  const files = ['iso8583_rules.py','iso8583_parse.py','iso8583_validate.py','web_adapter.py'];
+  for (const fn of files){
+    const resp = await fetch('./' + fn);
+    if (!resp.ok) throw new Error('Could not load ' + fn + ' (' + resp.status + ')');
+    const text = await resp.text();
+    pyodide.FS.writeFile('/' + fn, text);
+  }
+  pyodide.runPython("import sys\nif '/' not in sys.path: sys.path.insert(0, '/')");
+  pyodide.runPython("import web_adapter");
+
+  // Populate txn menu from the engine's own TXN_MENU_ITEMS (single source of truth)
+  const txnJson = pyodide.runPython("web_adapter.txn_menu_json()");
+  const txnItems = JSON.parse(txnJson);
+  fillSelect('ov-txn', txnItems.map(([code, desc]) => [code, code === desc ? code : (desc + ' (' + code + ')')]));
+
+  pyodideReady = pyodide;
+  setStatus('Ready.');
+  updateRunEnabled();
+  runBtn.textContent = 'Run Validation';
+}
+boot().catch(err=>{
+  setStatus('Failed to load Python runtime: ' + err.message, true);
+  runBtn.textContent = 'Unavailable';
+});
+
+function lightBitmap(deIdsPresent){
+  const present = new Set((deIdsPresent||[]).map(Number));
+  document.querySelectorAll('.bitmap .tick').forEach(t=>{
+    const de = Number(t.dataset.de);
+    t.classList.toggle('on', present.has(de));
+  });
+}
+
+function renderDetect(res){
+  const grid = document.getElementById('detect-grid');
+  grid.innerHTML = '';
+  const cells = [
+    ['Leg matched', res.matched_leg_name || '(full selection)'],
+    ['Card', (res.card_norm||'—') + (res.detected_card ? ' · auto' : ' · default')],
+    ['Entry mode', (res.entry_norm||'—') + (res.detected_entry ? ' · auto' : ' · default')],
+    ['Txn type', res.txn_type || '—'],
+    ['PIN block present', res.pin_status || 'No'],
+  ];
+  cells.forEach(([k,v])=>{
+    const c = document.createElement('div');
+    c.className = 'dcell';
+    c.innerHTML = '<div class="k">'+k+'</div><div class="v">'+v+'</div>';
+    grid.appendChild(c);
+  });
+}
+
+let lastReportText = '';
+let lastFilename = 'iso8583_report.txt';
+
+document.getElementById('btn-run').addEventListener('click', async ()=>{
+  if (!pyodideReady) return;
+  runBtn.disabled = true;
+  const prevLabel = runBtn.textContent;
+  runBtn.textContent = 'Validating…';
+  setStatus('');
+
+  try{
+    pyodideReady.FS.writeFile('/rule_config.csv', fileText.config || '');
+    pyodideReady.FS.writeFile('/rule_emv.csv', fileText.emv || '');
+    if (fileText.de61) pyodideReady.FS.writeFile('/rule_de61.csv', fileText.de61);
+    if (fileText.de63) pyodideReady.FS.writeFile('/rule_de63.csv', fileText.de63);
+
+    const isoText = document.getElementById('trace-text').value;
+    const targetLeg = document.getElementById('target-leg').value;
+    const cardOv = document.getElementById('ov-card').value;
+    const entryOv = document.getElementById('ov-entry').value;
+    const txnOv = document.getElementById('ov-txn').value;
+
+    const webRun = pyodideReady.globals.get('web_adapter').web_run_json;
+    const jsonStr = webRun(
+      isoText, targetLeg,
+      '/rule_config.csv', '/rule_emv.csv',
+      fileText.de61 ? '/rule_de61.csv' : '/rule_de61_missing.csv',
+      fileText.de63 ? '/rule_de63.csv' : '/rule_de63_missing.csv',
+      cardOv || null, entryOv || null, txnOv || null
+    );
+    const res = JSON.parse(jsonStr);
+
+    if (!res.ok){
+      setStatus(res.error || 'Validation failed.', true);
+      if (res.de_ids_present) lightBitmap(res.de_ids_present);
+      runBtn.disabled = false;
+      runBtn.textContent = prevLabel;
+      return;
+    }
+
+    document.getElementById('report-empty').style.display = 'none';
+    document.getElementById('report-body').style.display = 'block';
+
+    const warnBox = document.getElementById('csv-warn');
+    if (res.csv_warnings && res.csv_warnings.length){
+      warnBox.style.display = 'block';
+      warnBox.textContent = 'CONFIG WARNINGS:\n' + res.csv_warnings.map(w=>'- '+w).join('\n');
+    } else {
+      warnBox.style.display = 'none';
+    }
+
+    renderDetect(res);
+    lightBitmap(res.de_ids_present);
+    document.getElementById('n-pass').textContent = res.passed;
+    document.getElementById('n-fail').textContent = res.failed;
+    document.getElementById('report-text').textContent = res.report_text;
+
+    lastReportText = res.report_text;
+    lastFilename = [res.txn_type, res.card_norm, res.entry_norm].filter(Boolean).join('_') + '.txt';
+
+    setStatus('Done — ' + res.passed + ' passed, ' + res.failed + ' failed.');
+  } catch(err){
+    setStatus('Unexpected error: ' + err.message, true);
+  } finally {
+    runBtn.disabled = false;
+    runBtn.textContent = prevLabel;
+    updateRunEnabled();
+  }
+});
+
+document.getElementById('btn-copy').addEventListener('click', async ()=>{
+  if (!lastReportText) return;
+  await navigator.clipboard.writeText(lastReportText);
+  const btn = document.getElementById('btn-copy');
+  const old = btn.textContent;
+  btn.textContent = 'Copied!';
+  setTimeout(()=>btn.textContent = old, 1200);
+});
+
+document.getElementById('btn-download').addEventListener('click', ()=>{
+  if (!lastReportText) return;
+  const blob = new Blob([lastReportText], {type:'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = lastFilename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+</script>
 
 </body>
 </html>
