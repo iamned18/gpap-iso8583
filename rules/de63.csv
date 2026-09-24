@@ -1,5 +1,5 @@
 TXN,EntryMode,Cards,SubfieldID,Rule,Description
-Sale,A,,1,O,Transaction Identifier
+Sale,A,,1,M,Transaction Identifier
 Sale,A,,2,O,Validation Code
 Sale,A,,3,O,Product ID
 Sale,A,,4,O,Merchant Specific Data
@@ -8,7 +8,7 @@ Sale,T,M,8,M,Device Type Indicator
 Sale,A,,11,M,Specification Version
 Sale,F,,12,M,Chip Condition Code
 Sale,A,,13,M,Acceptance Device Type
-PreAuth,A,,1,O,Transaction Identifier
+PreAuth,A,,1,M,Transaction Identifier
 PreAuth,A,,2,O,Validation Code
 PreAuth,A,,3,O,Product ID
 PreAuth,A,,4,O,Merchant Specific Data
@@ -17,14 +17,14 @@ PreAuth,T,M,8,M,Device Type Indicator
 PreAuth,A,,11,M,Specification Version
 PreAuth,F,,12,M,Chip Condition Code
 PreAuth,A,,13,M,Acceptance Device Type
-PVoid,A,U,1,O,Transaction Identifier
+PVoid,A,U,1,M,Transaction Identifier
 PVoid,A,U,2,O,Validation Code
 PVoid,A,U,3,O,Product ID
 PVoid,A,U,4,O,Merchant Specific Data
 PVoid,A,U,11,M,Specification Version
 PVoid,F,U,12,M,Chip Condition Code
 PVoid,A,U,13,M,Acceptance Device Type
-Void,A,,1,O,Transaction Identifier
+Void,A,,1,M,Transaction Identifier
 Void,A,,2,O,Validation Code
 Void,A,,3,O,Product ID
 Void,A,,4,O,Merchant Specific Data
@@ -33,7 +33,7 @@ Void,T,M,8,M,Device Type Indicator
 Void,A,,11,M,Specification Version
 Void,F,,12,M,Chip Condition Code
 Void,A,,13,M,Acceptance Device Type
-Refund,A,,1,O,Transaction Identifier
+Refund,A,,1,M,Transaction Identifier
 Refund,A,,2,O,Validation Code
 Refund,A,,3,O,Product ID
 Refund,A,,4,O,Merchant Specific Data
@@ -42,7 +42,7 @@ Refund,T,M,8,M,Device Type Indicator
 Refund,A,,11,M,Specification Version
 Refund,F,,12,M,Chip Condition Code
 Refund,A,,13,M,Acceptance Device Type
-RVoid,A,V,1,O,Transaction Identifier
+RVoid,A,V,1,M,Transaction Identifier
 RVoid,A,V,2,O,Validation Code
 RVoid,A,V,3,O,Product ID
 RVoid,A,V,4,O,Merchant Specific Data
@@ -51,14 +51,14 @@ RVoid,T,M,8,M,Device Type Indicator
 RVoid,A,V,11,M,Specification Version
 RVoid,F,V,12,M,Chip Condition Code
 RVoid,A,V,13,M,Acceptance Device Type
-Completion,A,,1,O,Transaction Identifier
+Completion,A,,1,M,Transaction Identifier
 Completion,A,,2,O,Validation Code
 Completion,A,,3,O,Product ID
 Completion,A,,4,O,Merchant Specific Data
 Completion,A,,11,M,Specification Version
 Completion,F,,12,M,Chip Condition Code
 Completion,A,,13,M,Acceptance Device Type
-SaleTip,A,,1,O,Transaction Identifier
+SaleTip,A,,1,M,Transaction Identifier
 SaleTip,A,,2,O,Validation Code
 SaleTip,A,,3,O,Product ID
 SaleTip,A,,4,O,Merchant Specific Data
@@ -67,55 +67,55 @@ SaleTip,T,M,8,M,Device Type Indicator
 SaleTip,A,,11,M,Specification Version
 SaleTip,F,,12,M,Chip Condition Code
 SaleTip,A,,13,M,Acceptance Device Type
-SaleAdj,A,,1,O,Transaction Identifier
+SaleAdj,A,,1,M,Transaction Identifier
 SaleAdj,A,,2,O,Validation Code
 SaleAdj,A,,3,O,Product ID
 SaleAdj,A,,4,O,Merchant Specific Data
 SaleAdj,A,,11,M,Specification Version
 SaleAdj,F,,12,M,Chip Condition Code
 SaleAdj,A,,13,M,Acceptance Device Type
-TCUpload,A,,1,O,Transaction Identifier
+TCUpload,A,,1,M,Transaction Identifier
 TCUpload,A,,2,O,Validation Code
 TCUpload,A,,3,O,Product ID
 TCUpload,A,,4,O,Merchant Specific Data
 TCUpload,A,,11,M,Specification Version
 TCUpload,A,,13,M,Acceptance Device Type
-RSale,A,,1,O,Transaction Identifier
+RSale,A,,1,M,Transaction Identifier
 RSale,A,,2,O,Validation Code
 RSale,A,,3,O,Product ID
 RSale,A,,4,O,Merchant Specific Data
 RSale,A,,11,M,Specification Version
 RSale,F,,12,M,Chip Condition Code
 RSale,A,,13,M,Acceptance Device Type
-RPreAuth,A,,1,O,Transaction Identifier
+RPreAuth,A,,1,M,Transaction Identifier
 RPreAuth,A,,2,O,Validation Code
 RPreAuth,A,,3,O,Product ID
 RPreAuth,A,,4,O,Merchant Specific Data
 RPreAuth,A,,11,M,Specification Version
 RPreAuth,F,,12,M,Chip Condition Code
 RPreAuth,A,,13,M,Acceptance Device Type
-RVoid,A,,1,O,Transaction Identifier
+RVoid,A,,1,M,Transaction Identifier
 RVoid,A,,2,O,Validation Code
 RVoid,A,,3,O,Product ID
 RVoid,A,,4,O,Merchant Specific Data
 RVoid,A,,11,M,Specification Version
 RVoid,F,,12,M,Chip Condition Code
 RVoid,A,,13,M,Acceptance Device Type
-RRefund,A,,1,O,Transaction Identifier
+RRefund,A,,1,M,Transaction Identifier
 RRefund,A,,2,O,Validation Code
 RRefund,A,,3,O,Product ID
 RRefund,A,,4,O,Merchant Specific Data
 RRefund,A,,11,M,Specification Version
 RRefund,F,,12,M,Chip Condition Code
 RRefund,A,,13,M,Acceptance Device Type
-RCompletion,A,,1,O,Transaction Identifier
+RCompletion,A,,1,M,Transaction Identifier
 RCompletion,A,,2,O,Validation Code
 RCompletion,A,,3,O,Product ID
 RCompletion,A,,4,O,Merchant Specific Data
 RCompletion,A,,11,M,Specification Version
 RCompletion,F,,12,M,Chip Condition Code
 RCompletion,A,,13,M,Acceptance Device Type
-HSBC,A,,1,O,Transaction Identifier
+HSBC,A,,1,M,Transaction Identifier
 HSBC,A,,2,O,Validation Code
 HSBC,A,,3,O,Product ID
 HSBC,A,,4,O,Merchant Specific Data
@@ -125,7 +125,7 @@ HSBC,A,,10,M,Installment Plan details
 HSBC,A,,11,M,Specification Version
 HSBC,F,,12,M,Chip Condition Code
 HSBC,A,,13,M,Acceptance Device Type
-BPI,A,,1,O,Transaction Identifier
+BPI,A,,1,M,Transaction Identifier
 BPI,A,,2,O,Validation Code
 BPI,A,,3,O,Product ID
 BPI,A,,4,O,Merchant Specific Data
@@ -137,7 +137,7 @@ BPI,F,,12,M,Chip Condition Code
 BPI,A,,13,M,Acceptance Device Type
 BPI,A,,20,M,Available Multi-issuer IPP or SIP Terms Request
 BPI,A,,23,M,SIP Options Request
-BPIOPT,A,,1,O,Transaction Identifier
+BPIOPT,A,,1,M,Transaction Identifier
 BPIOPT,A,,2,O,Validation Code
 BPIOPT,A,,3,O,Product ID
 BPIOPT,A,,4,O,Merchant Specific Data
@@ -148,7 +148,7 @@ BPIOPT,F,,12,M,Chip Condition Code
 BPIOPT,A,,13,M,Acceptance Device Type
 BPIOPT,A,,20,M,Available Multi-issuer IPP or SIP Terms Request
 BPIOPT,A,,23,M,SIP Options Request
-MIPP,A,,1,O,Transaction Identifier
+MIPP,A,,1,M,Transaction Identifier
 MIPP,A,,2,O,Validation Code
 MIPP,A,,3,O,Product ID
 MIPP,A,,4,O,Merchant Specific Data
@@ -159,35 +159,35 @@ MIPP,A,,11,M,Specification Version
 MIPP,F,,12,M,Chip Condition Code
 MIPP,A,,13,M,Acceptance Device Type
 MIPP,A,,20,M,Available Multi-issuer IPP or SIP Terms Request
-RVoid,A,M,1,O,Transaction Identifier
+RVoid,A,M,1,M,Transaction Identifier
 RVoid,A,M,2,O,Validation Code
 RVoid,A,M,3,O,Product ID
 RVoid,A,M,4,O,Merchant Specific Data
 RVoid,A,M,11,M,Specification Version
 RVoid,F,M,12,M,Chip Condition Code
 RVoid,A,M,13,M,Acceptance Device Type
-RVoid,A,J,1,O,Transaction Identifier
+RVoid,A,J,1,M,Transaction Identifier
 RVoid,A,J,2,O,Validation Code
 RVoid,A,J,3,O,Product ID
 RVoid,A,J,4,O,Merchant Specific Data
 RVoid,A,J,11,M,Specification Version
 RVoid,F,J,12,M,Chip Condition Code
 RVoid,A,J,13,M,Acceptance Device Type
-CVoid,A,,1,O,Transaction Identifier
+CVoid,A,,1,M,Transaction Identifier
 CVoid,A,,2,O,Validation Code
 CVoid,A,,3,O,Product ID
 CVoid,A,,4,O,Merchant Specific Data
 CVoid,A,,11,M,Specification Version
 CVoid,F,,12,M,Chip Condition Code
 CVoid,A,,13,M,Acceptance Device Type
-Batch,A,,1,O,Transaction Identifier
+Batch,A,,1,M,Transaction Identifier
 Batch,A,,2,O,Validation Code
 Batch,A,,3,O,Product ID
 Batch,A,,4,O,Merchant Specific Data
 Batch,A,,11,M,Specification Version
 Batch,F,,12,M,Chip Condition Code
 Batch,A,,13,M,Acceptance Device Type
-BatchR,A,,1,O,Transaction Identifier
+BatchR,A,,1,M,Transaction Identifier
 BatchR,A,,2,O,Validation Code
 BatchR,A,,3,O,Product ID
 BatchR,A,,4,O,Merchant Specific Data
